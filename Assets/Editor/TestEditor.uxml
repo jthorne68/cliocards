@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox name="lists" style="flex-direction: row; max-height: none; height: 30%;">
+        <ui:ListView name="cards" style="width: 40%;" />
+        <ui:ListView name="deck" style="width: 40%;" />
+    </ui:GroupBox>
+    <ui:GroupBox style="flex-direction: row;">
+        <ui:Button text="New" name="newbtn" enable-rich-text="true" />
+        <ui:Button text="Add" name="addbtn" style="text-overflow: clip; -unity-text-align: middle-center;" />
+        <ui:Button text="Remove" name="delbtn" />
+    </ui:GroupBox>
+    <ui:ScrollView style="height: 80%;">
+        <ui:Label text="Label" name="output" />
+    </ui:ScrollView>
+</ui:UXML>

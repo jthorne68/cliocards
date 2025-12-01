@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Fader
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Backdrop
+    uniqueID: 1568985195
+    locked: 0
+  - name: Art2
+    uniqueID: 2533496983
+    locked: 0
+  - name: Art1
+    uniqueID: 3647980009
+    locked: 0
+  - name: Cover
+    uniqueID: 3130875149
+    locked: 0
+  - name: Text
+    uniqueID: 2537496315
+    locked: 0
+  - name: Card
+    uniqueID: 3875100527
+    locked: 0
+  - name: UI
+    uniqueID: 1479324927
+    locked: 0
+  - name: UI Cards
+    uniqueID: 1199502779
+    locked: 0
+  - name: UI Text
+    uniqueID: 2442821937
+    locked: 0
+  - name: fader
+    uniqueID: 3448406945
+    locked: 0
+  m_RenderingLayers:
+  - Default

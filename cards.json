@@ -1,0 +1,393 @@
+{
+	"cards":[
+	{
+		"name":"BLANK",
+		"art":"",
+		"desc":"",
+		"rules":"",
+		"type":"none"
+	},
+
+
+
+
+
+
+	{
+		"name":"Sales",
+		"art":"bank",
+		"desc":"+5 wealth\n-2 stability",
+		"rules":"wealth+5,stability-2",
+		"type":""
+	},
+	{
+		"name":"Repayment",
+		"art":"bank",
+		"desc":"-{debt} wealth (debt)\nremove",
+		"rules":"wealth-debt,remove",
+		"type":"harm"
+	},
+
+
+
+
+
+
+	{
+		"name":"Global Sales",
+		"art":"globe",
+		"desc":"+10 wealth\n-5 stability",
+		"rules":"wealth+10,stability-5",
+		"type":""
+	},
+	{
+		"name":"Local Sales",
+		"art":"car",
+		"desc":"+2 wealth",
+		"rules":"wealth+2",
+		"type":""
+	},
+	{
+		"name":"Hospital",
+		"art":"institution",
+		"desc":"+10 stability\nremove",
+		"rules":"stability+10,remove",
+		"type":""
+	},
+	{
+		"name":"Research",
+		"art":"science",
+		"desc":"+7 wealth\n+1 play\nthis year",
+		"rules":"wealth+7,plays+1",
+		"type":""
+	},
+	{
+		"name":"Dig",
+		"art":"miner",
+		"desc":"+5 stability\n+1 deal\nthis year",
+		"rules":"stability+5,deals+1",
+		"type":""
+	},
+	{
+		"name":"Diversify",
+		"art":"bank",
+		"desc":"+10 capital\n+1 hand size\nthis year",
+		"rules":"capital+10,hand+1",
+		"type":""
+	},
+	{
+		"name":"Share Resources",
+		"art":"textiles",
+		"desc":"+5 stability,\n-1 play this year",
+		"rules":"stability+5,plays-1",
+		"type":""
+	},
+	{
+		"name":"Flexibility",
+		"art":"gallery",
+		"desc":"+1 deal\nthis year",
+		"rules":"deals+1",
+		"type":""
+	},
+	{
+		"name":"Patience",
+		"art":"market",
+		"desc":"-1 goal",
+		"rules":"goal-1",
+		"type":""
+	},
+	{
+		"name":"Diversify",
+		"art":"shipping",
+		"desc":"+1 hand size\nthis year",
+		"rules":"hand+1",
+		"type":""
+	},
+	{
+		"name":"Venture",
+		"art":"bank",
+		"desc":"+20 wealth\n-20 stability",
+		"rules":"wealth+20,stability-20",
+		"type":""
+	},
+	{
+		"name":"Invest",
+		"art":"bank",
+		"desc":"+1 investment",
+		"rules":"investment+1",
+		"type":""
+	},
+	{
+		"name":"Dividend",
+		"art":"bank",
+		"desc":"+{investment} wealth (investment)",
+		"rules":"wealth+investment",
+		"type":""
+	},
+	{
+		"name":"Sell-off",
+		"art":"bank",
+		"desc":"+{investment} wealth (investment)\nfive times\nset investment to 0",
+		"rules":"wealth+investment,wealth+investment,wealth+investment,wealth+investment,wealth+investment,investment=0",
+		"type":""
+	},
+	{
+		"name":"Worker Training",
+		"art":"bank",
+		"desc":"-5 wealth\n+1 education",
+		"rules":"wealth-5,education+1",
+		"type":""
+	},
+	{
+		"name":"University",
+		"art":"institution",
+		"desc":"-20 wealth\n+5 education\nremove",
+		"rules":"wealth-20,education+5,remove",
+		"type":""
+	},
+	{
+		"name":"Skilled Workers",
+		"art":"science",
+		"desc":"+{education} stability (education)",
+		"rules":"stability+education",
+		"type":""
+	},
+	{
+		"name":"Research Grant",
+		"art":"bank",
+		"desc":"+10 education\nthis quarter",
+		"rules":"education+10,education-10|quarter+",
+		"type":""
+	},
+	{
+		"name":"Social Mobility",
+		"art":"bank",
+		"desc":"stability+5\nadd an Elite",
+		"rules":"stability+5,deck+Elite",
+		"type":""
+	},
+	{
+		"name":"Elite",
+		"art":"banker",
+		"desc":"+10 wealth\n+{elite} stability\n(decrease by 1)",
+		"rules":"wealth+10,stability+elite,elite-1",
+		"type":""
+	},
+	{
+		"name":"Fundraiser",
+		"art":"bank",
+		"desc":"-8 wealth\n+5 stability",
+		"rules":"wealth-8,stability+5",
+		"type":""
+	},
+	{
+		"name":"Childcare",
+		"art":"child",
+		"desc":"-14 wealth\nadd a Housekeeper\neach quarter this year",
+		"rules":"wealth-14,deck+Housekeeper|quarter+|year+",
+		"type":""
+	},
+	{
+		"name":"Housekeeper",
+		"art":"domestic",
+		"desc":"-7 wealth\n+10 stability\n(remove)",
+		"rules":"wealth-7,stability+10,remove",
+		"type":""
+	},
+	{
+		"name":"Celebration",
+		"art":"circus",
+		"desc":"-24 wealth\n+8 stability",
+		"rules":"wealth-24,stability+8",
+		"type":""
+	},
+	{
+		"name":"Foundation",
+		"art":"institution",
+		"desc":"-20 capital\n+20 stability",
+		"rules":"capital-20,stability+20",
+		"type":""
+	},
+	{
+		"name":"Profit Draw",
+		"art":"bank",
+		"desc":"-10 wealth\n+15 capital",
+		"rules":"wealth-10,capital+15",
+		"type":""
+	},
+	{
+		"name":"Skim",
+		"art":"bank",
+		"desc":"+2 capital",
+		"rules":"capital+2",
+		"type":""
+	},
+	{
+		"name":"Grow",
+		"art":"bank",
+		"desc":"+1 play\nremove",
+		"rules":"maxplays+1,remove",
+		"type":""
+	},
+	{
+		"name":"Flex",
+		"art":"bank",
+		"desc":"+1 deal\nremove",
+		"rules":"maxdeals+1,remove",
+		"type":""
+	},
+	{
+		"name":"See",
+		"art":"bank",
+		"desc":"+1 hand size\nremove",
+		"rules":"maxhand+1,remove",
+		"type":""
+	},
+
+	
+	
+	
+
+
+	{
+		"name":"Windfall",
+		"art":"bank",
+		"desc":"start the year\nwith 10 wealth",
+		"rules":"wealth+10",
+		"type":"year"
+	},
+	{
+		"name":"Inheritance",
+		"art":"bank",
+		"desc":"+50 capital",
+		"rules":"capital+50",
+		"type":"year"
+	},
+
+	{
+		"name":"Generosity",
+		"art":"bank",
+		"desc":"+2 stability\nper quarter",
+		"rules":"perm+*Generosity",
+		"type":"year"
+	},
+	{
+		"name":"*Generosity",
+		"art":"bank",
+		"desc":"+2 stability\nper quarter",
+		"rules":"stability+2|quarter+|year+",
+		"type":"perm"
+	},
+	
+	{
+		"name":"Public Education",
+		"art":"bank",
+		"desc":"+2 stability\nwhenever education increases",
+		"rules":"perm+*Public Education",
+		"type":"year"
+	},
+	{
+		"name":"*Public Education",
+		"art":"bank",
+		"desc":"+2 stability\nwhenever education increases",
+		"rules":"stability+2|education+|year+",
+		"type":"perm"
+	},
+	
+	
+	
+	{
+		"name":"Imbalance",
+		"art":"search",
+		"desc":"-2 stability\nwhenever wealth increases",
+		"rules":"perm+*Imbalance",
+		"type":"year"
+	},
+	{
+		"name":"*Imbalance",
+		"art":"search",
+		"desc":"-2 stability\nwhenever wealth increases",
+		"rules":"stability-1|wealth+|year+",
+		"type":"perm"
+	},
+
+
+	{
+		"name":"Scrutiny",
+		"art":"search",
+		"desc":"-5 stability\neach deal",
+		"rules":"perm+*Scrutiny",
+		"type":"year"
+	},
+	{
+		"name":"*Scrutiny",
+		"art":"search",
+		"desc":"-5 stability\neach deal",
+		"rules":"stability-5|deals-|year+",
+		"type":"perm"
+	},
+
+	{
+		"name":"Pandemic",
+		"art":"science",
+		"desc":"-10 stability\nper quarter",
+		"rules":"perm+*Pandemic",
+		"type":"year"
+	},
+	{
+		"name":"*Pandemic",
+		"art":"science",
+		"desc":"-10 stability\nper quarter",
+		"rules":"stability-10|quarter+|year+",
+		"type":"perm"
+	},
+
+
+
+	
+	
+	
+	
+	
+	{
+		"name":"Matching Funds",
+		"art":"institution",
+		"desc":"+1 wealth and\n+1 stability\nwhenever education increases",
+		"rules":"wealth+1|education+,stability+1|education+",
+		"type":"perm"
+	},
+	{
+		"name":"Deficit",
+		"art":"bank",
+		"desc":"+1 debt per year",
+		"rules":"debt+1|year+",
+		"type":"perm"
+	},
+	{
+		"name":"Office Lease",
+		"art":"bank",
+		"desc":"+1 play\n-2 capital\nwhenever wealth increases",
+		"rules":"maxplays+1,capital-2|wealth+",
+		"type":"perm"
+	},
+	{
+		"name":"Rethink",
+		"art":"bank",
+		"desc":"+1 deal\n-1 investment\nwhenever stability decreases",
+		"rules":"maxdeals+1,investment-2|stability-",
+		"type":"perm"
+	},
+	{
+		"name":"Portfolio",
+		"art":"bank",
+		"desc":"+1 hand\n+2 capital\nwhenever wealth increases",
+		"rules":"maxhand+1,capital+2|wealth+",
+		"type":"perm"
+	}
+
+
+	
+
+	
+	]
+}
