@@ -37,9 +37,17 @@ public class StoreDialog : MonoBehaviour
 
         prices = new List<int>();
         cart = new List<bool>();
+        int lowprice = 20;
+        int highprice = 40;
+        int inflation = state.getval("inflation");
+        for (int i = 0; i < state.getval("YEAR"); i++)
+        {
+            lowprice = lowprice + (int)(lowprice * inflation / 100);
+            highprice = highprice + (int)(highprice * inflation / 100);
+        }
         for (int i = 0; i < SHELFCOUNT; i++)
         {
-            prices.Add(1 + Random.Range(2, 5)); // TODO: replace placeholder data
+            prices.Add(1 + Random.Range(lowprice, highprice)); // TODO: replace placeholder data
             cart.Add(false);
         }
 
@@ -94,7 +102,7 @@ public class StoreDialog : MonoBehaviour
     public async void checkout()
     {
 
-        if (carttotal < capital)
+        if (carttotal <= capital)
         {
             await controller.fadescreen();
 
@@ -107,18 +115,12 @@ public class StoreDialog : MonoBehaviour
                 {
                     int id = items[i];
                     CardInfo info = CardLibrary.cardinfo(id);
-                    if (info.type == "perm")
-                        state.perms.Add(id);
+                    if (info.type == "perm") {
+                        state.processrulesforcard(id); // process any immediate effects
+                        state.perms.Add(id); // save permanently
+                    }
                     else
                         state.mycards.Add(id);
-                    /* cards/perms can do these
-                    {
-                        if (i == 8) { } // TODO: do card/perm remove
-                        else if (i == 9) state.addval(TableState.MAXDEALS, 1);
-                        else if (i == 10) state.addval(TableState.MAXHAND, 1);
-                        else if (i == 11) state.addval(TableState.MAXPLAYS, 1);
-                    }
-                    */
                 }
             }
 

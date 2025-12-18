@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
 using UnityEngine.Rendering;
+using System.Linq;
+using Newtonsoft.Json;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using System.Data;
+using UnityEngine.Audio;
 
 public class SlotInfo
 {
@@ -30,11 +35,16 @@ public class TableController : MonoBehaviour
     public AudioClip playsound;
     public AudioClip dealsound;
     public AudioClip scoresound;
+    public AudioClip wealthupsound;
+    public AudioClip wealthdownsound;
+    public AudioClip stabilityupsound;
+    public AudioClip stabilitydownsound;
     public AudioClip buysound;
     public AudioClip collapsesound;
     public AudioClip crowdsound;
     public AudioClip succeedsound;
     public AudioClip burnsound;
+    public AudioClip addsound;
 
     GameObject curdlg; // currenly displayed dialog
 
@@ -77,6 +87,7 @@ public class TableController : MonoBehaviour
 
     public Fader fadehandler;
     public GameObject fader;
+    public GameObject tutorial;
 
     public GameObject floater;
     public GameObject particleburn;
@@ -97,10 +108,11 @@ public class TableController : MonoBehaviour
     // values to hide from report
     HashSet<string> defaultvalues = new();
 
-    public bool isingame = false;
     public bool iscrumbling = false;
     public bool isanimating = false;
-	
+
+    private string filename;
+
     public void animatenumber(string key, string amount, Transform t)
     {
         float floatsp = 0.2f;
@@ -144,8 +156,7 @@ public class TableController : MonoBehaviour
     {
         fadehandler = fader.GetComponent<Fader>();
 
-		state = new TableState(CardLibrary.getdataref());
-		
+        defaultvalues.Add(TableState.CAPITAL);
         defaultvalues.Add(TableState.WEALTH);
         defaultvalues.Add(TableState.GOAL);
         defaultvalues.Add(TableState.STABILITY);
@@ -175,33 +186,85 @@ public class TableController : MonoBehaviour
         permslots = new List<GameObject>(TableState.MAX_PERMS);
         permcards = new List<GameObject>(TableState.MAX_PERMS);
 
+        loadstate();
+
         showmenu();
     }
+
+    public void loadstate()
+    {
+        filename = Application.persistentDataPath + "/cliodata.json";
+        if (System.IO.File.Exists(filename)) {
+            string statejson = System.IO.File.ReadAllText(filename);
+            if (statejson != null)
+                state = JsonConvert.DeserializeObject<TableState>(statejson);
+        }
+        if (state == null) {
+            state = new TableState();
+            state.init();
+        }
+        state.setcarddata(CardLibrary.getdataref());
+
+        updatelayout();
+
+        if (state.isingame)
+        {
+            // place all of the saved cards
+            challengecard = createcard(state.challenge, challengeslot, challengeslot);
+            for (int i = 0; i < state.hand.Count; i++) handcards[i] = createcard(state.hand[i], handslots[i], handslots[i]);
+            for (int i = 0; i < state.play.Count; i++) playcards[i] = createcard(state.play[i], playslots[i], playslots[i]);
+        }
+
+        updatestats(true);
+    }
+
+    public void savestate()
+    {
+        string statejson = JsonConvert.SerializeObject(state);
+        System.IO.File.WriteAllText(filename, statejson);
+    }
+
 
     public async Task fadescreen(bool isout = true)
     {
         fadehandler.fade(isout);
         await Task.Delay(1000);
     }
+    public void closetutorial()
+    {
+        tutorial.SetActive(false);
+    }
 
     public void newgame()
     {
-        isingame = true;
-		
-		state.newgame();
+        // clear any leftover game objects
+        for (int i = 0; i < playcards.Count; i++) { Destroy(playcards[i]); playcards[i] = null; }
+        for (int i = 0; i < handcards.Count; i++) { Destroy(handcards[i]); handcards[i] = null; }
+        for (int i = 0; i < permcards.Count; i++) { Destroy(permcards[i]); permcards[i] = null; }
+        //foreach (GameObject c in playcards) Destroy(c);
+        //foreach (GameObject c in handcards) Destroy(c);
+        //foreach (GameObject c in permcards) Destroy(c);
+        Destroy(zoomcard);
+        Destroy(dragcard);
+        Destroy(challengecard);
+
+        state.newgame();
 
         startnewyear();
     }
 
     public async void startnewyear()
     {
+        tutorial.SetActive((state.getval(TableState.STARTYEAR) == 1900) && 
+            (state.getval(TableState.YEAR) == 0));
         if (challengecard != null) Destroy(challengecard);
 
-        state.newyear();
-		
+        List<CardRule> result = state.newyear();
         shuffledeck();
         updatelayout();
         challengecard = createcard(state.challenge, challengeslot, challengeslot);
+        foreach (CardRule rule in result) await animaterule(rule);
+
         await dealhand();
     }
 
@@ -271,23 +334,34 @@ public class TableController : MonoBehaviour
     {
         int curwealth = state.getval(TableState.WEALTH);
         int curstab = state.getval(TableState.STABILITY);
+        int curgoal = state.getval(TableState.GOAL);
+        int curcapital = state.getval(TableState.CAPITAL);
+        int capitaldiff = 0;
+        Dictionary<string, int> diffs = new();
+        string st = "";
         if (ispreviewing)
         {
             TableState newstate = new TableState(state);
             newstate.processplays();
-            int wdiff = newstate.getval(TableState.WEALTH) - curwealth;
-            int sdiff = newstate.getval(TableState.STABILITY) - curstab;
-            wealthhandler.setprogress(curwealth, state.getval(TableState.GOAL), wdiff);
-            stablehandler.setprogress(curstab, 100, sdiff);
+            int wealthdiff = newstate.getval(TableState.WEALTH) - curwealth;
+            int stabilitydiff = newstate.getval(TableState.STABILITY) - curstab;
+            int goaldiff = newstate.getval(TableState.GOAL) - curgoal;
+            capitaldiff = newstate.getval(TableState.CAPITAL) - curcapital;
+            wealthhandler.setprogress(curwealth, curgoal, wealthdiff, goaldiff);
+            stablehandler.setprogress(curstab, 100, stabilitydiff);
+            foreach (KeyValuePair<string, int> kvp in newstate.values)
+                if (!defaultvalues.Contains(kvp.Key) && (kvp.Value != state.getval(kvp.Key)))
+                    diffs[kvp.Key] = kvp.Value - state.getval(kvp.Key);
         }
-        else
-        {
+        else {
             wealthhandler.setprogress(curwealth, state.getval(TableState.GOAL));
             stablehandler.setprogress(curstab, 100);
         }
-        string st = "STATS\n";
-        foreach (KeyValuePair<string, int> kvp in state.values)
-            if (!defaultvalues.Contains(kvp.Key)) st += kvp.Key + ": " + kvp.Value + "\n";
+        capitaldisplay.text = "Capital: " + curcapital + (capitaldiff == 0 ? "" : " \u2192 " + (curcapital + capitaldiff));
+        int diff = 0;
+        foreach (KeyValuePair<string, int> kvp in state.values) if (!defaultvalues.Contains(kvp.Key))
+            st += kvp.Key + ": " + kvp.Value + (diffs.TryGetValue(kvp.Key, out diff) ? 
+                    " \u2192 " + (int)(kvp.Value + diff) + "\n" : "\n");
         statdisplay.text = st;
     }
 
@@ -319,14 +393,14 @@ public class TableController : MonoBehaviour
         updatestackslot(discardslot, state.discard.Count);
     }
 
-    async Task discardhand(bool isquarter = false)
+    async Task discardhand()
     {
         deselectall();
         for (int i = 0; i < state.hand.Count; i++) {
 			var id = state.discardhandindex(i);
             if (id != 0) {
                 Destroy(handcards[i]);
-                createcard(id, handslots[i], isquarter ? deckslot : discardslot);
+                createcard(id, handslots[i], discardslot);
                 updatebuttons();
                 await Task.Delay(100);
             }
@@ -350,6 +424,16 @@ public class TableController : MonoBehaviour
 
         for (int i = 0; i < state.getval(TableState.HAND); i++)
         {
+            if (state.deck.Count == 0)
+            {
+                // shuffle ONLY the discard into hand
+                audiosource.PlayOneShot(shufflesound);
+                int j;
+                for (j = 0; j < state.discard.Count; j++) state.deck.Add(state.discard[j]);
+                state.discard = new List<int>();
+                state.shuffledeck(false);
+                await Task.Delay(500);
+            }
 			var id = state.dealnextcardindex(i);
 			if (id != 0) {
 				audiosource.PlayOneShot(dealsound);
@@ -359,11 +443,30 @@ public class TableController : MonoBehaviour
 			}
         }
         isanimating = false;
+        savestate();
     }
 
     public async void ondealbutton()
     {
         await dealhand();
+    }
+
+    public async Task animaterule(CardRule rule, Transform transform = null)
+    {
+        if (transform == null) {
+            for (int i = 0; i < state.perms.Count; i++) if (state.perms[i] == rule.id) transform = permslots[i].transform;
+            if (rule.id == state.challenge) transform = challengeslot.transform;
+            if (transform == null) return; // nowhere to animate?
+        }
+        bool isup = rule.amount.IndexOf('-') == -1;
+        if (rule.stat == TableState.WEALTH)
+            audiosource.PlayOneShot(isup ? wealthupsound : wealthdownsound);
+        else if (rule.stat == TableState.STABILITY)
+            audiosource.PlayOneShot(isup ? stabilityupsound : stabilitydownsound);
+        else
+            audiosource.PlayOneShot(scoresound);
+        animatenumber(rule.stat, rule.amount, transform);
+        await Task.Delay(150);
     }
 
     public async void nextquarter()
@@ -374,9 +477,6 @@ public class TableController : MonoBehaviour
 
         deselectall();
 
-        // process all played cards
-        await discardhand(true);
-		
         int curplays = state.getval(TableState.PLAYS);
         for (int i = 0; i < curplays; i++)
         {
@@ -386,22 +486,56 @@ public class TableController : MonoBehaviour
 			// play relevant animations for results
 			for (int j = 0; j < results.Count; j++) {
 				CardRule rule = results[j];
-                if (rule.stat == TableState.REMOVE)
+                if (rule.stat == TableState.DECK)
                 {
-                    Destroy(playcards[i]);
-                    playcards[i] = null;
-                    GameObject c = createcard(id, playslots[i], playslots[i]);
+                    // animation for adding a card to the deck
+                    if (rule.amount.IndexOf('-') == -1) {
+                        audiosource.PlayOneShot(addsound);
+                        int cid = CardLibrary.idfor(rule.amount.Trim('+'));
+                        GameObject c = createcard(cid, playslots[i], zoomslot);
+                        await Task.Delay(500);
+                        Destroy(c);
+                        c = createcard(cid, zoomslot, deckslot);
+                        await Task.Delay(500);
+                        Destroy(c);
+                    }
+                }
+                else if ((rule.stat == TableState.REMOVE) || (rule.stat == TableState.DELETE))
+                {
+                    GameObject slot = playslots[i];
+                    if (rule.stat == TableState.REMOVE)
+                    {
+                        Destroy(playcards[i]);
+                        playcards[i] = null;
+                    }
+                    else
+                    {
+                        Destroy(handcards[0]);
+                        handcards[0] = null;
+                        slot = handslots[0];
+                    }
+                    if (id == 0)
+                    {
+                        // get the id for the card that tried to get added
+                        for (int k = 0; k < results.Count; k++) if (results[k].stat == TableState.DECK) 
+                            id = CardLibrary.idfor(results[k].amount.Trim('+'));
+                        slot = deckslot;
+                    }
+                    GameObject c = createcard(id, slot, slot);
                     CardHandler h = c.GetComponent<CardHandler>();
                     h.scale = Vector2.zero;
-                    h.pos.y -= 0.3f; // fly up
+                    h.pos.y -= 0.3f; // move up a bit
                     Destroy(Instantiate(particleburn, c.transform.position, Quaternion.identity), 4.0f);
                     audiosource.PlayOneShot(burnsound);
                 }
-                else
+                else if (rule.stat == TableState.PREVENT)
                 {
-                    audiosource.PlayOneShot(scoresound);
-                    animatenumber(rule.stat, rule.amount, playslots[i].transform);
+                    // TODO: animation for prevention rule triggered
+                    id = 0;
+                    updatelayout();
                 }
+                else
+                    await animaterule(rule, rule.id == 0 ? playslots[i].transform : null);
 			}
 			
             if (id != 0) {
@@ -413,20 +547,26 @@ public class TableController : MonoBehaviour
                 }
                 updatestats();
                 updatelayout();
-                await Task.Delay(200);
+                await Task.Delay(150);
             }
         }
 
+        await discardhand();
+
         if (state.getval(TableState.QUARTER) < 4) { // shuffle and continue
             state.addval(TableState.QUARTER, 1);
+            // check for rules that trigger on a specific quarter
+            state.processrules(TableState.QUARTER, "=" + state.getval(TableState.QUARTER));
             state.setval(TableState.DEALS, state.getval(TableState.MAXDEALS));
-            shuffledeck();
+            // shuffledeck();
             isanimating = false;
             await dealhand();
             isanimating = true;
         }
         else // check for win/loss condition
         {
+            shuffledeck(); // end of year
+
             int rtype = ReportDialog.SUMMARY;
             string msg;
 
@@ -454,10 +594,14 @@ public class TableController : MonoBehaviour
             {
                 audiosource.PlayOneShot(succeedsound);
                 int wealth = state.getval(TableState.WEALTH);
-                int newgoal = wealth + (wealth / 10);
+                int capital = state.getval(TableState.CAPITAL);
+                int growth = state.getval("growth");
+                int newgoal = wealth + (int)(wealth * growth / 100);
                 int newyear = state.getval(TableState.YEAR) + 1;
                 msg = "business reached\n" + wealth + " wealth\n\ngoal for " + 
-                    (state.getval(TableState.STARTYEAR) + newyear) + "\nis now " + wealth + " + 10% = "+ newgoal;
+                    (state.getval(TableState.STARTYEAR) + newyear) + "\nis now " + 
+                    wealth + " + " + growth + "% = "+ newgoal + 
+                    "\ncapital = " + capital + " + " + wealth + " = " + (capital + wealth);
                 state.setval(TableState.GOAL, newgoal);
                 state.addval(TableState.CAPITAL, wealth);
             }
@@ -481,6 +625,7 @@ public class TableController : MonoBehaviour
                 iscrumbling = false;
             }
 
+            if (rtype != ReportDialog.SUMMARY) state.isingame = false;
             await fadescreen();
             curdlg = Instantiate(reportdlg);
             ReportDialog r = curdlg.GetComponent<ReportDialog>();
@@ -490,6 +635,8 @@ public class TableController : MonoBehaviour
         }
 
         isanimating = false;
+
+        savestate();
     }
 
     void zoominto(int id = 0)
@@ -498,7 +645,7 @@ public class TableController : MonoBehaviour
         if (id == 0) return;
         zoomcard = createcard(id, zoomslot, zoomslot);
         zoomcard.transform.localScale *= 0.8f;
-        zoomcard.transform.position += (Vector3)(Vector2.up * 0.1f);
+        zoomcard.transform.position += (Vector3)(Vector2.up * 0.5f);
     }
 
     void deselectall()
@@ -515,12 +662,17 @@ public class TableController : MonoBehaviour
     public void clickslot(GameObject slot)
     {
         SlotInfo info = slotinfo(slot);
-        if (info == null) return;
-        if (info.isperm)
+        if ((info != null) && info.isperm)
         {
             deselectall();
             zoominto(info.ids[info.ix]);
             drag = 0;
+            return;
+        }
+        if (slot == selectslot) {
+            deselectall();
+            drag = 0;
+            selectslot = null;
             return;
         }
         if ((selectslot != null) && (selectslot != slot) && (slot.GetComponent<SlotHandler>().isactive))
@@ -548,6 +700,10 @@ public class TableController : MonoBehaviour
                 showcardcollection("Discards", state.discard);
             else if (slot == challengeslot)
                 challengecard.SetActive(!challengecard.activeSelf);
+            else if (slot == zoomslot)
+            {
+                // show a card details dialog
+            }
             else if (info.cards[info.ix] != null)
             {
                 Destroy(info.cards[info.ix]);
@@ -618,6 +774,7 @@ public class TableController : MonoBehaviour
 
     public async void showdialog(GameObject dialog)
     {
+        tutorial.SetActive(false);
         if (curdlg) Destroy(curdlg);
         curdlg = Instantiate(dialog);
         curdlg.transform.SetParent(table.transform);
@@ -629,10 +786,10 @@ public class TableController : MonoBehaviour
         showdialog(menudlg);
     }
 
-    public void showcardcollection(string title, List<int> ids)
+    public void showcardcollection(string title, List<int> ids, GameObject returndlg = null)
     {
         showdialog(carddlg);
-        curdlg.GetComponent<CardsDialog>().setup(title, ids, state);
+        curdlg.GetComponent<CardsDialog>().setup(title, ids, state, this, returndlg);        
     }
 
     public void showmainmenu()
@@ -688,8 +845,9 @@ public class TableController : MonoBehaviour
             setslotactive(g, i < state.perms.Count);
             if (i >= permslots.Count) permslots.Add(g); else permslots[i] = g;
             if (i >= permcards.Count) permcards.Add(null);
-            if ((i < state.perms.Count) && (permcards[i] == null))
-                permcards[i] = createcard(state.perms[i], g, g);
+            Destroy(permcards[i]); // always re-assign these
+            permcards[i] = null;
+            if (i < state.perms.Count) permcards[i] = createcard(state.perms[i], g, g);
             fixcard(permcards[i], g);
         }
 
@@ -718,7 +876,7 @@ public class TableController : MonoBehaviour
         yeardisplay = GameObject.Find("yeardsp").GetComponent<TextMeshPro>();
         yeardisplay.text = "Year: " + (state.getval(TableState.YEAR) + state.getval(TableState.STARTYEAR));
         capitaldisplay = GameObject.Find("capitaldsp").GetComponent<TextMeshPro>();
-        capitaldisplay.text = "Capital: " + state.getval(TableState.CAPITAL);
+        // capitaldisplay.text = "Capital: " + state.getval(TableState.CAPITAL);
         statdisplay = GameObject.Find("statdsp").GetComponent<TextMeshPro>();
 
         if (curdlg) curdlg.transform.SetParent(table.transform);

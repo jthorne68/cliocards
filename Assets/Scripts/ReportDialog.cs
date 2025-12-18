@@ -56,13 +56,12 @@ public class ReportDialog : MonoBehaviour
     {
         Destroy(gameObject);
         if (reporttype != SUMMARY) {
-            controller.isingame = false;
+            controller.state.isingame = false;
             controller.showmenu();
         }
         else
         {
             controller.showdialog(controller.storedlg);
-//            controller.startnewyear();
         }
     }
 

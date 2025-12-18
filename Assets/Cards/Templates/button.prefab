@@ -167,6 +167,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -188,6 +190,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -221,8 +224,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -307,16 +310,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 6820308235991876793}
     m_Modifications:
     - target: {fileID: -7871556540511652807, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 54b10fa6ffaf9fa4f8e67cb90a25049d, type: 3}
+    - target: {fileID: -7871556540511652807, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_Color.b
-      value: 0.19245279
+      value: 0.21487436
       objectReference: {fileID: 0}
     - target: {fileID: -7871556540511652807, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_Color.g
-      value: 0.19245279
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: -7871556540511652807, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_Color.r
-      value: 0.19245279
+      value: 0.2013508
       objectReference: {fileID: 0}
     - target: {fileID: -7871556540511652807, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_SortingLayer
@@ -332,15 +339,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.64
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.89
+      value: 0.6378333
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalPosition.x
@@ -356,19 +363,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -380,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
       propertyPath: m_ConstrainProportionsScale

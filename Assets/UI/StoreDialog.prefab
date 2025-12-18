@@ -4552,6 +4552,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: btncheckout
       objectReference: {fileID: 0}
+    - target: {fileID: 5784787883802873466, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Color.b
+      value: 0.17899999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784787883802873466, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Color.g
+      value: 0.15662496
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784787883802873466, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Color.r
+      value: 0.12446093
+      objectReference: {fileID: 0}
     - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.x
       value: 40

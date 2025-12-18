@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: 02d49bd31b7b6a447bba2b5e805b87f2, type: 3}
-  m_Color: {r: 0.018440735, g: 0.058705214, b: 0.13207549, a: 1}
+  m_Color: {r: 0.07450981, g: 0.07450981, b: 0.07450981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -362,7 +362,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
-  m_Color: {r: 0.16603768, g: 0.16603768, b: 0.16603768, a: 1}
+  m_Color: {r: 0.07450981, g: 0.07450981, b: 0.07450981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -542,7 +542,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: -10
   m_Sprite: {fileID: 3286163911610860551, guid: 24b2c220aa69a0b41987fd18522e5e95, type: 3}
-  m_Color: {r: 0.42284086, g: 0.5072841, b: 0.554717, a: 1}
+  m_Color: {r: 0.5647059, g: 0.68235296, b: 0.50980395, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -632,7 +632,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: -5
   m_Sprite: {fileID: 3286163911610860551, guid: b94aebae363f0344ea8a5d264f4a78e1, type: 3}
-  m_Color: {r: 0.23020293, g: 0.35930791, b: 0.5169811, a: 1}
+  m_Color: {r: 0.34117648, g: 0.5058824, b: 0.43137258, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -934,10 +934,10 @@ PrefabInstance:
       addedObject: {fileID: 4629906729477307178}
     - targetCorrespondingSourceObject: {fileID: 8742538545776668643, guid: 72b194213fd731e44a25ba5bb23d71b2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5922063473820588844}
+      addedObject: {fileID: 5492657439320234777}
     - targetCorrespondingSourceObject: {fileID: 8742538545776668643, guid: 72b194213fd731e44a25ba5bb23d71b2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5492657439320234777}
+      addedObject: {fileID: 5922063473820588844}
     - targetCorrespondingSourceObject: {fileID: 8742538545776668643, guid: 72b194213fd731e44a25ba5bb23d71b2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6741358882757651303}

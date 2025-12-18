@@ -35,7 +35,8 @@ public class TestEditor : EditorWindow
         root.Add(m_VisualTreeAsset.Instantiate());
 
         data = new CardData();
-        state = new TableState(data);
+        state = new TableState();
+        state.setcarddata(data);
         state.newgame();
 
         cardlist = root.Q<ListView>("cards");

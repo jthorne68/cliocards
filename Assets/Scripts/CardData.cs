@@ -39,6 +39,7 @@ public class CardRule
     public string amount = "";
     public RuleTiming startat = new();
     public RuleTiming endat = new();
+    public int id = 0;
 }
 
 //////////////////////////////////////////
@@ -124,9 +125,10 @@ public class CardData
                         {
                             RuleTiming tm = (part == 2) ? rule.startat : rule.endat;
                             tm.stat = name;
+                            if (name == "delete" || name == "prevent") tm.stat = TableState.REMOVE; // synonyms
                             tm.isgain = operation == "+";
                             tm.isloss = operation == "-";
-                            tm.ismatch = operation == "=";
+                            tm.ismatch = operation == "" || operation == "=";
                             tm.matchvalue = value == "" ? 0 : Int32.Parse(value);
                         }
                         part++;

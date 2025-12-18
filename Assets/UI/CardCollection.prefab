@@ -56,6 +56,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -77,6 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1852145359
   m_SortingLayer: 9
   m_SortingOrder: -1
@@ -149,6 +152,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -170,6 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1199502779
   m_SortingLayer: 8
   m_SortingOrder: 0
@@ -300,6 +306,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -321,6 +329,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1852145359
   m_SortingLayer: 9
   m_SortingOrder: 0
@@ -469,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1cfb3d07050c94cbd106cc6299ab9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!210 &6374853004096800684
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -540,6 +550,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -561,6 +573,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -678,11 +691,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5191111
+      value: 0.2935301
       objectReference: {fileID: 0}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7218889
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0049
       objectReference: {fileID: 0}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalPosition.y
@@ -787,6 +804,14 @@ PrefabInstance:
     - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6831958
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.004916191
       objectReference: {fileID: 0}
     - target: {fileID: 7654909065553366133, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_text

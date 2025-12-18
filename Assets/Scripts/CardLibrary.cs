@@ -13,13 +13,54 @@ public class CardLibrary : MonoBehaviour
 
     private Dictionary<string, Sprite> artmap;
 
-    private List<Color> bgcolors;
-    private List<Color> colors1;
-    private List<Color> colors2;
-
     private TableController controller;
 
     // abstract card data access helper functions
+
+    private Dictionary<char, Color> colors = new();
+    private static string[] colornames = {
+        "0#475A67",
+        "1#57816E",
+        "2#6B9873",
+        "3#90AE82",
+        "4#B4B89D",
+        "5#C1BD9A",
+        "6#B8A481",
+        "7#AE8067",
+        "8#9D5C57",
+        "9#97444C",
+        "A#6F3142",
+        "B#5C2843",
+        "C#521F3D",
+        "D#261327",
+        "E#342547",
+        "F#363A5C",
+        "G#44537C",
+        "H#517BA3",
+        "I#6790AD",
+        "J#81ABB9",
+        "K#9BC2C1",
+        "L#C5C5C5",
+        "M#AFAFAF",
+        "N#999999",
+        "O#838383",
+        "P#6C6C6C",
+        "Q#575757",
+        "R#414141",
+        "S#292929",
+        "T#131313",
+        "U#271D17",
+        "V#31271C",
+        "W#47362E",
+        "X#5C4C3B",
+        "Y#90765D",
+        "Z#AE937B",
+    };
+
+    public Color colorfor(char c)
+    {
+        return colors[c];
+    }
 
     public static int idfor(string name) { return instance.data.idfor(name); }
     public static CardRules cardrules(int id) { return id < 0 ? null : id >= instance.data.cardrules.Count ? null : 
@@ -53,10 +94,6 @@ public class CardLibrary : MonoBehaviour
     public void setupcard(GameObject c, int id, TableState state)
     {
         CardInfo info = data.cardinfo(id);
-        int cix = 0;
-        if (info.type == "year") cix = 1;
-        else if (info.type == "harm") cix = 2;
-        else if (info.type == "perm") cix = 3;
 
         if ((c == null) || (info == null)) return;
         Transform t = c.transform.Find("name");
@@ -64,20 +101,20 @@ public class CardLibrary : MonoBehaviour
         tmp.text = info.name;
         t = c.transform.Find("text");
         tmp = t.GetComponent<TextMeshPro>();
-        // rich text! .Replace("$", "<color=green>$</color>");
-        if (state != null) tmp.text = state.subvals(info.desc); 
-
+        if (state != null) tmp.text = state.subvals(info.desc);
+        int len = info.art.Length;
+        if (len < 3) return;
         t = c.transform.Find("art1");
         SpriteRenderer sp = t.GetComponent<SpriteRenderer>();
-        sp.sprite = getart(info.art + "1");
-        sp.color = colors1[cix];
+        sp.sprite = getart(info.art.Substring(0, len - 3) + "1");
+        sp.color = colorfor(info.art[len - 2]);
         t = c.transform.Find("art2");
         sp = t.GetComponent<SpriteRenderer>();
-        sp.color = colors2[cix];
-        sp.sprite = getart(info.art + "2");
+        sp.color = colorfor(info.art[len - 1]);
+        sp.sprite = getart(info.art.Substring(0, len - 3) + "2");
         t = c.transform.Find("artbg");
         sp = t.GetComponent<SpriteRenderer>();
-        sp.color = bgcolors[cix];
+        sp.color = colorfor(info.art[len - 3]);
     }
 
     public static CardLibrary instance;
@@ -88,37 +125,12 @@ public class CardLibrary : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        bgcolors = new List<Color>();
-        colors1 = new List<Color>();
-        colors2 = new List<Color>();
-
-        Color c;
-        ColorUtility.TryParseHtmlString("#47B3C8", out c);
-        bgcolors.Add(c);
-        ColorUtility.TryParseHtmlString("#FFD66E", out c);
-        bgcolors.Add(c);
-        ColorUtility.TryParseHtmlString("#9DC6B1", out c);
-        bgcolors.Add(c);
-        ColorUtility.TryParseHtmlString("#B9C69D", out c);
-        bgcolors.Add(c);
-
-        ColorUtility.TryParseHtmlString("#000054", out c);
-        colors1.Add(c);
-        ColorUtility.TryParseHtmlString("#650F06", out c);
-        colors1.Add(c);
-        ColorUtility.TryParseHtmlString("#280C31", out c);
-        colors1.Add(c);
-        ColorUtility.TryParseHtmlString("#15310C", out c);
-        colors1.Add(c);
-
-        ColorUtility.TryParseHtmlString("#057373", out c);
-        colors2.Add(c);
-        ColorUtility.TryParseHtmlString("#CA6D29", out c);
-        colors2.Add(c);
-        ColorUtility.TryParseHtmlString("#273D56", out c);
-        colors2.Add(c);
-        ColorUtility.TryParseHtmlString("#4C5627", out c);
-        colors2.Add(c);
+        Color clr;
+        foreach (string s in colornames) {
+            char k = s[0];
+            if (ColorUtility.TryParseHtmlString(s.Remove(0, 1), out clr))
+                colors[k] = clr;
+        }
 
         artmap = new Dictionary<string, Sprite>();
     }

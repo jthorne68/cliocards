@@ -5,7 +5,10 @@ using UnityEngine.Rendering;
 
 public class CardsDialog : MonoBehaviour
 {
+    public TableController controller;
     public TableState state;
+    CardData carddata;
+    GameObject returndlg = null;
 
     string titletext;
     Dictionary<int, int> idcounts;
@@ -28,30 +31,36 @@ public class CardsDialog : MonoBehaviour
         int row = 0;
         int column = 0;
         minypos = 0;
+        carddata = CardLibrary.getdataref();
         for (int i = 0; i < ids.Count; i++)
         {
-            GameObject c = Instantiate(CardLibrary.instance.card, surface.transform);
-            c.GetComponent<CardHandler>().ismoving = false;
             int id = ids[i];
-            CardLibrary.instance.setupcard(c, id, state);
-            if (idcounts[id] > 1) c.transform.Find("name").GetComponent<TextMeshPro>().text += " x" + idcounts[id];
-            c.transform.localScale = new Vector2(200, 200);
-            float x = (column - (((float)MAXCOL) / 2)) * COLWIDTH;
-            float y = -row * ROWHEIGHT;
-            maxypos = -y;
-            c.transform.localPosition = new Vector2(x, y);
-            c.GetComponent<SortingGroup>().sortingLayerName = "UI Cards";
-            column++;
-            if (column > MAXCOL)
+            if (carddata.cardinfo(id).type != "COMMENT")
             {
-                column = 0;
-                row++;
+                GameObject c = Instantiate(CardLibrary.instance.card, surface.transform);
+                c.GetComponent<CardHandler>().ismoving = false;
+                CardLibrary.instance.setupcard(c, id, state);
+                if (idcounts[id] > 1) c.transform.Find("name").GetComponent<TextMeshPro>().text += " x" + idcounts[id];
+                c.transform.localScale = new Vector2(200, 200);
+                float x = (column - (((float)MAXCOL) / 2)) * COLWIDTH;
+                float y = -row * ROWHEIGHT;
+                maxypos = -y;
+                c.transform.localPosition = new Vector2(x, y);
+                c.GetComponent<SortingGroup>().sortingLayerName = "UI Cards";
+                column++;
+                if (column > MAXCOL)
+                {
+                    column = 0;
+                    row++;
+                }
             }
         }
     }
 
-    public void setup(string text, List<int>cardids, TableState s)
+    public void setup(string text, List<int>cardids, TableState s, TableController c, GameObject r = null)
     {
+        controller = c;
+        returndlg = r;
         state = s;
         titletext = text;
         ids = new();
@@ -71,6 +80,7 @@ public class CardsDialog : MonoBehaviour
     public void OnClose()
     {
         Destroy(gameObject);
+        if (returndlg != null) controller.showdialog(returndlg);
     }
 
 
@@ -89,7 +99,7 @@ public class CardsDialog : MonoBehaviour
 
     public void surfacemousewheel()
     {
-        yspeed = -Input.mouseScrollDelta.y * 20;
+        yspeed = -Input.mouseScrollDelta.y * 10;
     }
 
     public void surfacemouseup()
