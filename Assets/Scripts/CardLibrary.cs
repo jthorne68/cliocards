@@ -18,43 +18,51 @@ public class CardLibrary : MonoBehaviour
     // abstract card data access helper functions
 
     private Dictionary<char, Color> colors = new();
+
+    private static string[] colorvalues = {
+        "#6A8293",
+        "#4F965A",
+        "#4F90C8",
+        "#8286A9",
+        "#858585",
+        "#959066",
+        "#9C6E45",
+        "#B45F5C",
+        "#A85D71",
+        "#9B5E7D"
+    };
+
     private static string[] colornames = {
-        "0#475A67",
-        "1#57816E",
-        "2#6B9873",
-        "3#90AE82",
-        "4#B4B89D",
-        "5#C1BD9A",
-        "6#B8A481",
-        "7#AE8067",
-        "8#9D5C57",
-        "9#97444C",
-        "A#6F3142",
-        "B#5C2843",
-        "C#521F3D",
-        "D#261327",
-        "E#342547",
-        "F#363A5C",
-        "G#44537C",
-        "H#517BA3",
-        "I#6790AD",
-        "J#81ABB9",
-        "K#9BC2C1",
-        "L#C5C5C5",
-        "M#AFAFAF",
-        "N#999999",
-        "O#838383",
-        "P#6C6C6C",
-        "Q#575757",
-        "R#414141",
-        "S#292929",
-        "T#131313",
-        "U#271D17",
-        "V#31271C",
-        "W#47362E",
-        "X#5C4C3B",
-        "Y#90765D",
-        "Z#AE937B",
+        "0#AAB1B7",
+        "1#A0B9A4",
+        "2#A1B7CC",
+        "3#B2B4C0",
+        "4#B2B4C0",
+        "5#B2B4C0",
+        "6#BBAB9C",
+        "7#CBB8B7",
+        "8#C0A5AC",
+        "9#BBA5B1",
+        "A#6A8293",
+        "B#4F965A",
+        "C#4F90C8",
+        "D#8286A9",
+        "E#858585",
+        "F#959066",
+        "G#9C6E45",
+        "H#B45F5C",
+        "I#A85D71",
+        "J#9B5E7D",
+        "K#1A252F",
+        "L#112F15",
+        "M#112D49",
+        "N#262939",
+        "O#222222",
+        "P#2F2D19",
+        "Q#331D09",
+        "R#450C13",
+        "S#38151F",
+        "T#321725"
     };
 
     public Color colorfor(char c)
@@ -126,11 +134,28 @@ public class CardLibrary : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Color clr;
+        for (int i = 0; i < 10; i++)
+        {
+            ColorUtility.TryParseHtmlString(colorvalues[i], out clr);
+            colors[(char)((int)'A' + i)] = Color.Lerp(clr, Color.black, 0.2f);
+            colors[(char)((int)'0' + i)] = Color.Lerp(clr, Color.white, 0.6f);
+            colors[(char)((int)'K' + i)] = Color.Lerp(clr, Color.black, 0.8f);
+        }
+
+        /*
         foreach (string s in colornames) {
             char k = s[0];
-            if (ColorUtility.TryParseHtmlString(s.Remove(0, 1), out clr))
-                colors[k] = clr;
+            ColorUtility.TryParseHtmlString(s.Remove(0, 1), out clr);
+            if (k >= '0' && k <= '9') {
+                ColorUtility.TryParseHtmlString(s.Remove(0, 1), out clr);
+                clr = Color.Lerp(clr, Color.white, 0.9f);
+            }
+            else if ((k >= 'K') && (k <= 'T') {
+
+            }
+            colors[k] = clr;
         }
+        */
 
         artmap = new Dictionary<string, Sprite>();
     }

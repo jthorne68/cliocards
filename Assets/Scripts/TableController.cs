@@ -29,6 +29,7 @@ public class TableController : MonoBehaviour
     public GameObject eventdlg;
     public GameObject reportdlg;
     public GameObject storedlg;
+    public GameObject introdlg;
 
     public AudioSource audiosource;
     public AudioClip shufflesound;
@@ -45,6 +46,7 @@ public class TableController : MonoBehaviour
     public AudioClip succeedsound;
     public AudioClip burnsound;
     public AudioClip addsound;
+    public AudioClip bosssound;
 
     GameObject curdlg; // currenly displayed dialog
 
@@ -188,7 +190,7 @@ public class TableController : MonoBehaviour
 
         loadstate();
 
-        showmenu();
+        showdialog(introdlg);
     }
 
     public void loadstate()
@@ -262,7 +264,21 @@ public class TableController : MonoBehaviour
         List<CardRule> result = state.newyear();
         shuffledeck();
         updatelayout();
+        int year = state.getval(TableState.YEAR);
         challengecard = createcard(state.challenge, challengeslot, challengeslot);
+        if (year % 5 == 0)
+        {
+            challengecard.transform.position = Vector2.zero + Vector2.up * 5;
+            CardHandler h = challengecard.GetComponent<CardHandler>();
+            h.scale *= 2;
+            h.pos = Vector2.zero;
+            audiosource.PlayOneShot(bosssound);
+            await Task.Delay(2000);
+            GameObject prevcard = challengecard;
+            challengecard = createcard(state.challenge, challengecard, challengeslot);
+            Destroy(prevcard);
+        }
+
         foreach (CardRule rule in result) await animaterule(rule);
 
         await dealhand();
@@ -439,7 +455,7 @@ public class TableController : MonoBehaviour
 				audiosource.PlayOneShot(dealsound);
 				updatebuttons();
 				handcards[i] = createcard(state.hand[i], deckslot, handslots[i]);
-				await Task.Delay(200);
+				await Task.Delay(100);
 			}
         }
         isanimating = false;
@@ -466,7 +482,7 @@ public class TableController : MonoBehaviour
         else
             audiosource.PlayOneShot(scoresound);
         animatenumber(rule.stat, rule.amount, transform);
-        await Task.Delay(150);
+        await Task.Delay(80);
     }
 
     public async void nextquarter()
@@ -531,7 +547,12 @@ public class TableController : MonoBehaviour
                 else if (rule.stat == TableState.PREVENT)
                 {
                     // TODO: animation for prevention rule triggered
-                    id = 0;
+                    GameObject c = createcard(CardLibrary.idfor("Crackdown"), deckslot, deckslot);
+                    CardHandler h = c.GetComponent<CardHandler>();
+                    h.scale = Vector2.zero;
+                    h.pos.y -= 0.3f; // move up a bit
+                    Destroy(Instantiate(particleburn, c.transform.position, Quaternion.identity), 4.0f);
+                    audiosource.PlayOneShot(burnsound);
                     updatelayout();
                 }
                 else
@@ -547,7 +568,7 @@ public class TableController : MonoBehaviour
                 }
                 updatestats();
                 updatelayout();
-                await Task.Delay(150);
+                await Task.Delay(80);
             }
         }
 
@@ -556,7 +577,7 @@ public class TableController : MonoBehaviour
         if (state.getval(TableState.QUARTER) < 4) { // shuffle and continue
             state.addval(TableState.QUARTER, 1);
             // check for rules that trigger on a specific quarter
-            state.processrules(TableState.QUARTER, "=" + state.getval(TableState.QUARTER));
+            // state.processrules(TableState.QUARTER, "=" + state.getval(TableState.QUARTER)); // turns out: redundant
             state.setval(TableState.DEALS, state.getval(TableState.MAXDEALS));
             // shuffledeck();
             isanimating = false;
@@ -565,6 +586,9 @@ public class TableController : MonoBehaviour
         }
         else // check for win/loss condition
         {
+            // process end-of-year rules
+            state.processrules(TableState.QUARTER, "=5");
+
             shuffledeck(); // end of year
 
             int rtype = ReportDialog.SUMMARY;
@@ -662,6 +686,11 @@ public class TableController : MonoBehaviour
     public void clickslot(GameObject slot)
     {
         SlotInfo info = slotinfo(slot);
+        if (slot == zoomslot)
+        {
+            // TODO: show single-card details (use a text box like the stats)
+            return; 
+        }
         if ((info != null) && info.isperm)
         {
             deselectall();
@@ -874,7 +903,8 @@ public class TableController : MonoBehaviour
         stablehandler = GameObject.Find("stability").GetComponent<ProgressHandler>();
         stablehandler.stat = TableState.STABILITY;
         yeardisplay = GameObject.Find("yeardsp").GetComponent<TextMeshPro>();
-        yeardisplay.text = "Year: " + (state.getval(TableState.YEAR) + state.getval(TableState.STARTYEAR));
+        yeardisplay.text = "Year: " + (state.getval(TableState.YEAR) + state.getval(TableState.STARTYEAR)) +
+            " / " + (state.getval(TableState.STARTYEAR) + 25);
         capitaldisplay = GameObject.Find("capitaldsp").GetComponent<TextMeshPro>();
         // capitaldisplay.text = "Capital: " + state.getval(TableState.CAPITAL);
         statdisplay = GameObject.Find("statdsp").GetComponent<TextMeshPro>();

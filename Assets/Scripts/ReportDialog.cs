@@ -52,8 +52,9 @@ public class ReportDialog : MonoBehaviour
         
     }
 
-    public void OnClose()
+    async public void OnClose()
     {
+        await controller.fadescreen();
         Destroy(gameObject);
         if (reporttype != SUMMARY) {
             controller.state.isingame = false;

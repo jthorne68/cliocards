@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
@@ -57,7 +57,17 @@ public class TableState
     public List<int> play; // cards on table
     public List<int> discard; // cards discarded
 
+    public List<int> challenges; // challenges already seen
+
     public Dictionary<string, int> values; // all game state numbers
+
+    public static Dictionary<string, string> symboltable = new() {
+        { "investment", "▲" },
+        { "debt", "▼" },
+        { "education", "♦" },
+        { "unrest", "◊" },
+        { "housing", "■" }
+    };
 
     public bool isingame = false;
 
@@ -68,6 +78,7 @@ public class TableState
 	{
         isingame = false;
 		challenge = 0;
+        challenges = new();
 		perms = new();
 		mycards = new();
 		deck = new();
@@ -90,6 +101,7 @@ public class TableState
         isingame = t.isingame;
         data = t.data;
 		challenge = t.challenge;
+        challenges = new List<int>(t.challenges);
 		perms = new List<int>(t.perms);
 		mycards = new List<int>(t.mycards);
 		deck = new List<int>(t.deck);
@@ -106,16 +118,23 @@ public class TableState
         // set up default values according to current game settings
         isingame = true;
 
+        challenges = new();
         perms = new();
-
         play = new List<int>(new int[MAX_SLOTS]);
         hand = new List<int>(new int[MAX_HAND]);
         discard = new();
+        mycards = new();
 
+        setval(YEAR, 0);
+        challenge = 0;
+
+        for (int processyear = 1900; processyear <= getval(STARTYEAR); processyear += 10)
+            processrulesforcard(data.idfor("" + processyear));
+
+        /*
         setval(MAXDEALS, 3);
         setval(MAXHAND, 5);
         setval(MAXPLAYS, 3);
-        setval(YEAR, 0);
         setval(CAPITAL, 100);
 
         setval(GOAL, 30);
@@ -133,7 +152,6 @@ public class TableState
 		setval("growth", 10);
 		setval("inflation", 10);
 
-        int startyear = getval(STARTYEAR);
 		if (startyear >= 1910) setval(CAPITAL, 30);
 		if (startyear >= 1920) setval("debt", 10);
 		if (startyear >= 1930) setval(MAXHAND, 4);
@@ -145,25 +163,12 @@ public class TableState
 		if (startyear >= 1990) setval("inflation", 15);
 		if (startyear >= 2000) setval(GOAL, 40);
 
-        challenge = 0;
-
-        // starter cards
-        mycards = new();
         for (int j = 0; j < 5; j++) {
             mycards.Add(data.idfor("Sale"));
             mycards.Add(data.idfor("Repayment"));
             mycards.Add(data.idfor("Donation"));
         }
-
-        //mycards.Add(data.idfor("Win"));
-        //mycards.Add(data.idfor("Purge"));
-        //mycards.Add(data.idfor("Social Mobility"));
-        //mycards.Add(data.idfor("Paid Interns"));
-        //mycards.Add(data.idfor("Profit Draw"));
-
-        //perms.Add(data.idfor("Resource Recovery"));
-        //perms.Add(data.idfor("Public Education"));
-        //perms.Add(data.idfor("Local Schools"));
+        */
 
     }
 
@@ -192,7 +197,13 @@ public class TableState
         {
             Debug.Log("invalid key: " + key);
         }
-        if (key == STABILITY) v = Mathf.Clamp(v, 0, 100);
+        if (key == STABILITY) v = Mathf.Clamp(v, -10000, 100);
+        else if (key == PLAYS) v = Mathf.Clamp(v, 1, 12);
+        else if (key == MAXPLAYS) v = Mathf.Clamp(v, 1, 12);
+        else if (key == HAND) v = Mathf.Clamp(v, 1, 8);
+        else if (key == MAXHAND) v = Mathf.Clamp(v, 1, 8);
+        else if (key == DEALS) v = Mathf.Clamp(v, 0, 5);
+        else if (key == MAXDEALS) v = Mathf.Clamp(v, 1, 5);
         values[key] = v;
     }
 	
@@ -201,12 +212,19 @@ public class TableState
 		return processrules(key, a.ToString()); 
 	}
 
+    public string symbolfor(string key)
+    {
+        if (!symboltable.TryGetValue(key, out string result)) result = "";
+        return result;
+    }
+
     public string subvals(string s)
     {
         if (s.IndexOf('{') != -1)
             foreach (KeyValuePair<string, int> e in values)
-                s = s.Replace("{" + e.Key + "}", "<color=yellow>" + e.Value.ToString() + "</color>");
+                s = s.Replace("{" + e.Key + "}", "<color=yellow>" + e.Value.ToString() + symbolfor(e.Key) + "</color>");
         s = s.Replace("\nremove", "\n<color=#FFC080>remove</color>");
+        s = s.Replace("+<color=yellow>-", "<color=yellow>-"); // don't show +-
         return s;
     }
 
@@ -250,7 +268,8 @@ public class TableState
             if (op == '+')
             {
                 // permanent effects must be unique
-                if (!perms.Contains(id)) perms.Add(id);
+                // NOTE: This is enforced by store; statuses can stack.
+                if ((stat == STAT) || !perms.Contains(id)) perms.Add(id);
             }
             else if (op == '-') perms.Remove(id);
         }
@@ -275,6 +294,7 @@ public class TableState
 
         bool ischallenge = challenge != 0;
         if (ischallenge) perms.Add(challenge);
+        List<int> removals = new();
         for (int i = 0; i < perms.Count; i++) {
             CardRules rules = data.cardrules[perms[i]];
             for (int j = 0; j < rules.rules.Count; j++) {
@@ -284,7 +304,7 @@ public class TableState
                     if (r.stat == PREVENT)
                     {
                         mycards.Remove(addedid); // never mind; remove the card immediately from deck and collection
-                        hand.RemoveAt(hand.Count - 1);
+                        deck.RemoveAt(deck.Count - 1);
                     }
                     foreach (CardRule rule in processrules(r.stat, r.amount))
                     {
@@ -293,11 +313,13 @@ public class TableState
                     }
                     // result.AddRange(processrules(r.stat, r.amount));
                 }
-                if (r.endat.istriggered(stat, v, a)) perms[i] = 0;
+                if (r.endat.istriggered(stat, v, a)) removals.Add(i); // perms[i] = 0;
             }
         }
         if (ischallenge) perms.RemoveAt(perms.Count - 1);
-        perms.RemoveAll(i => i == 0);
+        for (int j = removals.Count - 1; j >= 0; j--)
+            perms.RemoveAt(removals[j]);
+        // perms.RemoveAll(i => i == 0);
         return result;
     }	
 	
@@ -305,7 +327,9 @@ public class TableState
     {
         List<CardRule> result = new();
         List<CardRule> r = data.rulesfor(id);
-        for (int i = 0; i < r.Count; i++) result.AddRange(processrules(r[i].stat, r[i].amount));
+        for (int i = 0; i < r.Count; i++)
+            if (r[i].startat.stat == "") // only process unconditional rules
+                result.AddRange(processrules(r[i].stat, r[i].amount));
         return result;
     }
 
@@ -323,24 +347,30 @@ public class TableState
 
         result.AddRange(processrules(QUARTER, "=1"));        
 
-        // setval(QUARTER, 1);
-
-        /*
-            level 1 (beneficial) (1-10)
-            level 2 (low impact) (6-15)
-            level 3 (high impact) (11-20)
-            level 4 (crippling) (16-25)
-            boss (5, 10, 15, 20, 25)
-        */
-        string yearname = "year1";
         int year = getval(YEAR);
-        if (year % 5 == 0) challenge = data.randomcard("boss1", 0, new List<int>()) + (int)(year / 5);
-        else if ((year > 20) || ((year >= 16) && (Random.Range(0, 2) == 0))) yearname = "year4";
-        else if ((year > 15) || ((year >= 11) && (Random.Range(0, 2) == 0))) yearname = "year3";
-        else if ((year > 10) || ((year >= 6) && (Random.Range(0, 2) == 0))) yearname = "year2";
+        if (year % 5 == 0) challenge = data.randomcard("boss" + (int)(year / 5), 0, challenges);
+        else
+        {
+            // find an available challenge appropriate for the current year range
+            int trych = -1;
+            challenge = -1;
+            while (challenge == -1)
+            {
+                challenge = data.randomcard("year1", 0, challenges);
+                if ((challenge == -1) || ((year > 6) && (Random.Range(0, 2) == 0)))
+                    trych = data.randomcard("year2", 0, challenges);
+                if (trych != -1) challenge = trych;
+                if ((challenge == -1) || ((year > 11) && (Random.Range(0, 2) == 0)))
+                    trych = data.randomcard("year3", 0, challenges);
+                if (trych != -1) challenge = trych;
+                if ((challenge == -1) || (year > 20) || ((year > 16) && (Random.Range(0, 2) == 0)))
+                    trych = data.randomcard("year4", 0, challenges);
+                if (trych != -1) challenge = trych;
+            }
+        }
 
         // challenge rules apply at the end of year/quarter, not beginning
-        challenge = data.randomcard(yearname, 0, new List<int>());
+        challenges.Add(challenge);
         result.AddRange(processrulesforcard(challenge));
         return result;
 	}
@@ -408,7 +438,8 @@ public class TableState
             }
             else if (rule.stat == PERM)
             {
-                perms.Add(id);
+                int pid = CardLibrary.idfor(rule.amount.Trim('+'));
+                if (!perms.Contains(id)) perms.Add(pid);
             }
             else if (string.IsNullOrEmpty(rule.startat.stat))
                 results.AddRange(processrules(rule.stat, rule.amount));

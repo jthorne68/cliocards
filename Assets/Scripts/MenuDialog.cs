@@ -8,6 +8,7 @@ public class MenuDialog : MonoBehaviour
     TableController controller;
     TableState state;
     TextMeshPro yeartext;
+    TextMeshPro difftext;
 
     public GameObject closebtn;
     public GameObject resignbtn;
@@ -22,6 +23,7 @@ public class MenuDialog : MonoBehaviour
         state = controller.state;
         updatevisibility();
         yeartext = GameObject.Find("yeartext").GetComponent<TextMeshPro>();
+        difftext = GameObject.Find("difftext").GetComponent<TextMeshPro>();
         updateyear();
     }
 
@@ -61,6 +63,8 @@ public class MenuDialog : MonoBehaviour
         if (year <= 1900) return;
         year -= 10;
         state.setval(TableState.STARTYEAR, year);
+        leftbtn.SetActive(year > 1900);
+        rightbtn.SetActive(true);
         updateyear();
     }
 
@@ -70,13 +74,19 @@ public class MenuDialog : MonoBehaviour
         if (year >= 2000) return;
         year += 10;
         state.setval(TableState.STARTYEAR, year);
+        rightbtn.SetActive(year < 2000);
+        leftbtn.SetActive(true);
         updateyear();
     }
 
     public void OnReference()
     {
         List<int> ids = new();
-        for (int i = 0; i < CardLibrary.getdataref().totalcards(); i++) ids.Add(i);
+        for (int i = 0; i < CardLibrary.getdataref().totalcards(); i++)
+        {
+            CardInfo info = CardLibrary.cardinfo(i);
+            if ((info.type == "") || (info.type == "perm")) ids.Add(i);
+        }
         controller.showcardcollection("All cards", ids, controller.menudlg);
     }
 
@@ -87,7 +97,13 @@ public class MenuDialog : MonoBehaviour
 
     public void updateyear()
     {
-        yeartext.text = "" + state.getval(TableState.STARTYEAR);
+        int startyear = state.getval(TableState.STARTYEAR);
+        yeartext.text = "" + startyear;
+
+        string dtext = "";
+        for (;startyear > 1900; startyear -= 10)
+            dtext += startyear + " " + CardLibrary.cardinfo(CardLibrary.idfor("" + startyear)).desc + "\n";            
+        difftext.text = dtext;
     }
 
     // Update is called once per frame

@@ -4,8 +4,75 @@
 	{
 		"name":"STARTING CARDS",
 		"desc":"five of each go into the starting deck",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"", "rules":"", "type":"COMMENT"
 	},
+
+	{
+		"name":"1900","art":"", "desc":"",
+		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Win,deck+Fusion Power",
+		"type":"temp"
+	},
+
+	{
+		"name":"1910","art":"", "desc":"Less starting capital",
+		"rules":"capital=30",
+		"type":"temp"
+	},
+
+	{
+		"name":"1920","art":"", "desc":"More staring debt",
+		"rules":"debt=10",
+		"type":"temp"
+	},
+	
+	{
+		"name":"1930","art":"", "desc":"Smaller starting hand",
+		"rules":"maxhand=4",
+		"type":"temp"
+	},
+
+	{
+		"name":"1940","art":"", "desc":"Debt goes up each year",
+		"rules":"perm+Deficit",
+		"type":"temp"
+	},
+
+	{
+		"name":"1950","art":"", "desc":"Larger starting goal",
+		"rules":"goal=35",
+		"type":"temp"
+	},
+
+	{
+		"name":"1960","art":"", "desc":"Stability starts at 50%",
+		"rules":"stability=50",
+		"type":"temp"
+	},
+
+	{
+		"name":"1970","art":"", "desc":"Higher annual growth",
+		"rules":"growth=15",
+		"type":"temp"
+	},
+
+	{
+		"name":"1980","art":"", "desc":"Fewer starting deals",
+		"rules":"maxdeals=2",
+		"type":"temp"
+	},
+
+	{
+		"name":"1990","art":"", "desc":"Higher store inflation",
+		"rules":"inflation=15",
+		"type":"temp"
+	},
+
+	{
+		"name":"2000","art":"", "desc":"Larger starting goal",
+		"rules":"goal=40",
+		"type":"temp"
+	},
+
 
 	{
 		"name":"Win",
@@ -32,7 +99,7 @@
 	{
 		"name":"Repayment",
 		"art":"bankKDG",
-		"desc":"-{debt} wealth (debt)\nremove",
+		"desc":"-{debt} wealth\nremove",
 		"rules":"wealth-debt,remove",
 		"type":"temp"
 	},
@@ -84,14 +151,14 @@
 	{
 		"name":"Planning",
 		"art":"constructionLTP",
-		"desc":"+3 wealth\n+1 investment",
-		"rules":"wealth+2,investment+1",
+		"desc":"+3 wealth\n+1 investment ({investment})",
+		"rules":"wealth+3,investment+1",
 		"type":""
 	},
 	{
 		"name":"Cash Flow",
 		"art":"bank3T1",
-		"desc":"-1 investment\nadd two Spend cards",
+		"desc":"-1 investment ({investment})\nadd two Spend cards",
 		"rules":"investment-1,deck+Spend,deck+Spend",
 		"type":""
 	},
@@ -113,7 +180,7 @@
 		"name":"Trim Workforce",
 		"art":"gang8DA",
 		"desc":"+15 wealth, add a\nStrike card",
-		"rules":"wealth+15,deck+Strike,stat+Labor Movement",
+		"rules":"wealth+15,deck+Strike,perm+Labor Movement",
 		"type":""
 	},
 	{
@@ -140,7 +207,7 @@
 	{
 		"name":"Sell-off",
 		"art":"bankKTY",
-		"desc":"+{investment} wealth\nthree times\n-3 investment",
+		"desc":"+{investment} wealth\nthree times\n-3 investment ({investment})",
 		"rules":"wealth+investment,wealth+investment,wealth+investment,investment-3",
 		"type":""
 	},
@@ -156,36 +223,36 @@
 	{
 		"name":"Buy-in",
 		"art":"shipping3T1",
-		"desc":"+5 investment\nremove",
+		"desc":"+5 investment ({investment})\nremove",
 		"rules":"investment+5,remove",
 		"type":""
 	},
 	{
 		"name":"Collaboration",
 		"art":"police3T1",
-		"desc":"+8 investment\nthis year",
+		"desc":"+8 investment ({investment})\nthis year",
 		"rules":"investment+8,stat+ Collaboration ",
 		"type":""
 	},
 	{
 		"name":" Collaboration ",
 		"art":"police3T1",
-		"desc":"+8 investment\nthis year",
-		"rules":"investment-8|year+|year+",
+		"desc":"+8 investment ({investment})\nthis year",
+		"rules":"investment-8|quarter=5|quarter=5",
 		"type":"stat"
 	},
 	{
 		"name":"Project",
 		"art":"construction3T1",
-		"desc":"+1 investment\nper quarter\nthis year",
+		"desc":"+1 investment ({investment})\nper quarter\nthis year",
 		"rules":"stat+ Project ",
 		"type":""
 	},
 	{
 		"name":" Project ",
 		"art":"construction3T1",
-		"desc":"+1 investment\nper quarter\nthis year",
-		"rules":"investment+1|quarter+|year+",
+		"desc":"+1 investment ({investment})\nper quarter\nthis year",
+		"rules":"investment+1|quarter+|quarter=5",
 		"type":"stat"
 	},
 	{
@@ -198,21 +265,21 @@
 	{
 		"name":"Crackdown",
 		"art":"police8DA",
-		"desc":"-4 stability\nremove the next card\nadded to your deck",
-		"rules":"stability+4,stat+ Crackdown ",
+		"desc":"-5 stability\nremove the next card\nadded to your deck",
+		"rules":"stability-5,perm+ Crackdown ",
 		"type":""
 	},
 	{
 		"name":" Crackdown ",
 		"art":"police8DA",
 		"desc":"remove the next card\nadded to your deck",
-		"rules":"prevent|deck+|deck+,remove|deck+|deck+",
+		"rules":"prevent|deck+|deck+",
 		"type":"stat"
 	},
 	{
 		"name":"Merger",
 		"art":"institutionLTP",
-		"desc":"double investment\n-1 hand size permanently\nremove",
+		"desc":"double investment ({investment})\n-1 hand size permanently\nremove",
 		"rules":"investment+investment,hand-1,maxhand-1,remove",
 		"type":""
 	},	
@@ -270,7 +337,7 @@
 	{
 		"name":"Paid Interns",
 		"art":"child6TG",
-		"desc":"+2 stability\n+1 education",
+		"desc":"+2 stability\n+1 education ({education})",
 		"rules":"stability+2,education+1",
 		"type":""
 	},
@@ -285,8 +352,8 @@
 		"name":" Opportunity ",
 		"art":"construction6TG",
 		"desc":"+1 deal this year",
-		"rules":"maxdeals-1|year+|year+",
-		"type":""
+		"rules":"maxdeals-1|year+|quarter=5",
+		"type":"temp"
 	},
 	{
 		"name":"Public Event",
@@ -325,24 +392,24 @@
 		"type":""
 	},
 	{
-		"name":"Build Housing",
-		"art":"loggerLUX",
-		"desc":"+{housing} stability\nset housing to 0",
-		"rules":"stability+housing,housing=0",
+		"name":"Burn Fuel",
+		"art":"gadgetLUX",
+		"desc":"+{energy} stability\nset energy ({energy}) to 0",
+		"rules":"stability+energy,energy=0",
 		"type":""
 	},
 
 	{
 		"name":"Fundraiser",
 		"art":"galleryKTY",
-		"desc":"+1 education\nwhen wealth decrases\nthis quarter",
+		"desc":"+1 education ({education})\nwhen wealth decrases\nthis quarter",
 		"rules":"stat+ Fundraiser ",
 		"type":""
 	},
 	{
 		"name":" Fundraiser ",
 		"art":"galleryKTY",
-		"desc":"+1 education\nwhen wealth decrases\nthis quarter",
+		"desc":"+1 education ({education})\nwhen wealth decrases\nthis quarter",
 		"rules":"education+1|wealth-|quarter+",
 		"type":"stat"
 	},
@@ -361,16 +428,16 @@
 		"type":""
 	},
 	{
-		"name":"Infrastructure",
-		"art":"bridgeKTY",
-		"desc":"double housing\nremove",
-		"rules":"housing+housing,remove",
+		"name":"Fusion Power",
+		"art":"gadgetKTY",
+		"desc":"double energy ({energy})",
+		"rules":"energy+energy",
 		"type":""
 	},
 	{
 		"name":"University",
 		"art":"institutionKTY",
-		"desc":"double education\n-1 deal permanently\nremove",
+		"desc":"double education ({education})\n-1 deal permanently\nremove",
 		"rules":"education+education,maxdeals-1,remove",
 		"type":""
 	},
@@ -393,14 +460,21 @@
 		"name":"Childcare",
 		"art":"child3T1",
 		"desc":"-14 wealth\nadd a Housekeeper\neach quarter this year",
-		"rules":"wealth-14,deck+Housekeeper|quarter+|year+",
+		"rules":"wealth-14,stat+ Childcare ",
+		"type":""
+	},
+	{
+		"name":" Childcare ",
+		"art":"child3T1",
+		"desc":"add a Housekeeper\neach quarter this year",
+		"rules":"deck+Housekeeper|quarter+|quarter=5",
 		"type":""
 	},
 	{
 		"name":"Housekeeper",
 		"art":"domesticLUX",
-		"desc":"-7 wealth\n+10 stability\nremove",
-		"rules":"wealth-7,stability+10,remove",
+		"desc":"-7 wealth\n+15 stability\nremove",
+		"rules":"wealth-7,stability+15,remove",
 		"type":"temp"
 	},
 
@@ -489,14 +563,14 @@
 	{
 		"name":"Consolidation",
 		"art":"globe8DA",
-		"desc":"+1 play permanently\n-1 investment\neach year",
+		"desc":"+1 play permanently\n-1 investment ({investment})\neach year",
 		"rules":"maxplays+1,investment-1|year+",
 		"type":"perm"
 	},
 	{
 		"name":"Moral Panic",
 		"art":"policeLTP",
-		"desc":"+1 play permanently\n-1 education\neach year",
+		"desc":"+1 play permanently\n-1 education ({education})\neach year",
 		"rules":"maxplays+1,education-1|year+",
 		"type":"perm"
 	},
@@ -504,7 +578,7 @@
 		"name":"Migrant Labor",
 		"art":"worker6C9",
 		"desc":"+1 play permanently\nadd a Strike\neach year",
-		"rules":"maxplays+1,deck+Strike|year+",
+		"rules":"maxplays+1,deck+Strike|year+,perm+Labor Movement",
 		"type":"perm"
 	},
 	{
@@ -533,14 +607,14 @@
 	{
 		"name":"Deficit",
 		"art":"bank8DA",
-		"desc":"+1 debt per year\ndebt: {debt}",
+		"desc":"+1 debt ({debt}) per year",
 		"rules":"debt+1|year+",
 		"type":"stat"
 	},
 	{
 		"name":"Labor Movement",
 		"art":"gangKDG",
-		"desc":"+1 unrest per year\nunrest: {unrest}",
+		"desc":"+1 unrest ({unrest}) per year",
 		"rules":"unrest+1|year+",
 		"type":"stat"
 	},
@@ -588,10 +662,10 @@
 		"type":"perm"
 	},
 	{
-		"name":"Property Taxes",
-		"art":"bank6TG",
-		"desc":"+3 housing when wealth decreases",
-		"rules":"housing+3|wealth-",
+		"name":"Power Grid",
+		"art":"rural6TG",
+		"desc":"\n+{energy} stability\neach year and\nset energy ({energy}) to 0",
+		"rules":"stability+{energy}|quarter=1,energy=0|quarter=1",
 		"type":"perm"
 	},	
 	{
@@ -630,10 +704,10 @@
 		"type":"perm"
 	},	
 	{
-		"name":"Rental Housing",
-		"art":"rural3T1",
-		"desc":"+1 investment\nwhen housing increases",
-		"rules":"investment+1|housing+",
+		"name":"Power Plant",
+		"art":"construction3T1",
+		"desc":"+1 investment ({investment})\nwhen energy increases",
+		"rules":"investment+1|energy+",
 		"type":"perm"
 	},	
 	
@@ -668,15 +742,15 @@
 	{
 		"name":"College Funds",
 		"art":"institutionLTP",
-		"desc":"+5 education",
+		"desc":"+5 education ({education})",
 		"rules":"education+5",
 		"type":"year1"
 	},	
 	{
 		"name":"Public Works",
 		"art":"bridgeLTP",
-		"desc":"+10 housing",
-		"rules":"housing+10",
+		"desc":"+10 energy ({energy})",
+		"rules":"energy+10",
 		"type":"year1"
 	},	
 	{
@@ -694,10 +768,10 @@
 		"type":"year1"
 	},	
 	{
-		"name":"Housing Program",
+		"name":"Rural Energy",
 		"art":"ruralLTP",
-		"desc":"+5 housing\nper quarter",
-		"rules":"housing+5|quarter+",
+		"desc":"+5 energy ({energy})\nper quarter",
+		"rules":"energy+5|quarter+",
 		"type":"year1"
 	},	
 
@@ -733,11 +807,11 @@
 		"name":"Long Work Hours",
 		"art":"workerLUX",
 		"desc":"Add a Strike\nat the start of\nquarter three",
-		"rules":"deck+Strike|quarter=3",
+		"rules":"deck+Strike|quarter=3,perm+Labor Movement",
 		"type":"year2"
 	},	
 	{
-		"name":"Dwindling Resources",
+		"name":"Scarce Resources",
 		"art":"mineLUX",
 		"desc":"-20 stability when\nremoving a card",
 		"rules":"stability-20|remove",
@@ -770,7 +844,7 @@
 		"name":"Wage Erosion",
 		"art":"miner8DA",
 		"desc":"Add a Strike\neach quarter",
-		"rules":"deck+Strike|quarter+",
+		"rules":"deck+Strike|quarter+,perm+Labor Movement",
 		"type":"year3"
 	},	
 	{
@@ -837,14 +911,14 @@
 		"name":"Rationing",
 		"art":"farmerLUX",
 		"desc":"set hand size to 8\nset deals to zero",
-		"rules":"hand=8,deals=0",
+		"rules":"hand=8,deals=1",
 		"type":"boss1"
 	},	
 	{
 		"name":"Contraction",
 		"art":"constructionLTP",
 		"desc":"-1 play\n+1 deal",
-		"rules":"play-1,deals+1",
+		"rules":"plays-1,deals+1",
 		"type":"boss2"
 	},	
 	{
@@ -865,7 +939,7 @@
 		"name":"Crash",
 		"art":"gang8DA",
 		"desc":"set stability to 10\n-50 wealth\n-3 stability when\nwealth increases",
-		"rules":"",
+		"rules":"stability=10,wealth-50,stability-3|wealth+",
 		"type":"boss5"
 	},	
 

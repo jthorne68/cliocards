@@ -31,16 +31,35 @@ public class StoreDialog : MonoBehaviour
 
         capital = state.getval(TableState.CAPITAL);
 
-        items = new List<int>();
+        items = new();
+        List<int> invalidperms = new();
+        invalidperms.AddRange(state.perms); // no duplicate permanents
+        if (state.getval(TableState.YEAR) % 5 != 0)
+        {
+            // after boss fight, allow these plan-increasing permanents to appear
+            invalidperms.Add(CardLibrary.idfor("Distrust"));
+            invalidperms.Add(CardLibrary.idfor("Diversification"));
+            invalidperms.Add(CardLibrary.idfor("Monopoly"));
+            invalidperms.Add(CardLibrary.idfor("Consolidation"));
+            invalidperms.Add(CardLibrary.idfor("Moral Panic"));
+            invalidperms.Add(CardLibrary.idfor("Migrant Labor"));
+            invalidperms.Add(CardLibrary.idfor("Deficit Spending"));
+            invalidperms.Add(CardLibrary.idfor("Expansion"));
+        }
         for (int i = 0; i < SHELFCOUNT; i++)
-            items.Add(CardLibrary.randomcard(i >= 8 ? "perm" : "", 0, items)); // TODO: replace placeholder data
+        {
+            bool isperm = i >= 8;
+            int storecard = CardLibrary.randomcard(isperm ? "perm" : "", 0, isperm ? invalidperms : items);
+            items.Add(storecard);
+            invalidperms.Add(storecard);
+        }
 
         prices = new List<int>();
         cart = new List<bool>();
         int lowprice = 20;
         int highprice = 40;
         int inflation = state.getval("inflation");
-        for (int i = 0; i < state.getval("YEAR"); i++)
+        for (int i = 0; i < state.getval(TableState.YEAR); i++)
         {
             lowprice = lowprice + (int)(lowprice * inflation / 100);
             highprice = highprice + (int)(highprice * inflation / 100);

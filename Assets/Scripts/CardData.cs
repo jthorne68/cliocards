@@ -96,9 +96,17 @@ public class CardData
 	
     void parserules()
     {
+        System.Random rand = new System.Random(1234); // seed it to always get the same colors for now
         cardrules = new List<CardRules>();
         for (int i = 0; i < cardlist.cards.Length; i++)
         {
+            // strip and randomize colors for testing
+            string a = cardlist.cards[i].art;
+            if (a.Length > 3) cardlist.cards[i].art = a.Substring(0, a.Length - 3)
+                + (char)('0' + rand.Next(0, 9))
+                + (char)('K' + rand.Next(0, 9))
+                + (char)('A' + rand.Next(0, 9));
+
             string r = cardlist.cards[i].rules + ","; // ensure termination
             CardRules rlist = new CardRules();
 
@@ -172,11 +180,15 @@ public class CardData
     public int randomcard(string type, int rarity, List<int> skip)
     {
         int ix = 0;
-        while (true)
+        List<int> pool = new();
+        for (ix = 0; ix < cardlist.cards.Length; ix++)
+            if ((cardlist.cards[ix].type == type) && (skip.IndexOf(ix) == -1)) pool.Add(ix);
+        if (pool.Count == 0)
         {
-            ix = UnityEngine.Random.Range(3, cardlist.cards.Length);
-            if ((cardlist.cards[ix].type == type) && (skip.IndexOf(ix) == -1)) return ix;
+            Debug.Log("No card available: " + type + " " + skip);
+            return -1;
         }
+        return pool[UnityEngine.Random.Range(0, pool.Count)];
     }
 
 }
