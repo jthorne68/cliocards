@@ -64,9 +64,9 @@ public class TableState
     public static Dictionary<string, string> symboltable = new() {
         { "investment", "▲" },
         { "debt", "▼" },
-        { "education", "♦" },
+        { "energy", "♦" },
         { "unrest", "◊" },
-        { "housing", "■" }
+        { "education", "■" }
     };
 
     public bool isingame = false;

@@ -222,6 +222,15 @@ public class TableController : MonoBehaviour
 
     public void savestate()
     {
+        try { System.IO.File.Delete(filename.Replace(".json", ".json.bk9")); }
+        catch { Debug.Log("No backup 9 to delete"); }
+        for (int i = 8; i >= 0; i--) {
+            try { 
+                System.IO.File.Move(filename.Replace(".json", i == 0 ? ".json" : (".json.bk" + i)), 
+                    filename.Replace(".json", ".json.bk" + (i + 1))); 
+            }
+            catch { Debug.Log("No backup " + i + " to rename"); }
+        }
         string statejson = JsonConvert.SerializeObject(state);
         System.IO.File.WriteAllText(filename, statejson);
     }
@@ -378,6 +387,7 @@ public class TableController : MonoBehaviour
         foreach (KeyValuePair<string, int> kvp in state.values) if (!defaultvalues.Contains(kvp.Key))
             st += kvp.Key + ": " + kvp.Value + (diffs.TryGetValue(kvp.Key, out diff) ? 
                     " \u2192 " + (int)(kvp.Value + diff) + "\n" : "\n");
+        foreach (KeyValuePair<string, string> s in TableState.symboltable) st = st.Replace(s.Key, s.Value + " " + s.Key);
         statdisplay.text = st;
     }
 

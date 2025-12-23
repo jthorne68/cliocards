@@ -59,7 +59,7 @@ public class CardHandler : MonoBehaviour
                 t.position += (Vector3)move;
                 cur = t.localScale;
                 t.localScale += new Vector3((scale.x - cur.x) * moveby, (scale.y - cur.y) * moveby, 0);
-                t.eulerAngles = new Vector3(0, 0, -(move.x * 360));
+                t.eulerAngles = new Vector3(0, 0, -(move.x * 10 / moveby));
             }
         }
     }

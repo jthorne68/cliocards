@@ -2,14 +2,14 @@
 	"cards":[
 
 	{
-		"name":"STARTING CARDS",
-		"desc":"five of each go into the starting deck",
+		"name":"STARTING YEAR RULES AND DECK",
+		"desc":"",
 		"art":"", "rules":"", "type":"COMMENT"
 	},
 
 	{
 		"name":"1900","art":"", "desc":"",
-		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Win,deck+Fusion Power",
+		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation",
 		"type":"temp"
 	},
 
@@ -76,7 +76,7 @@
 
 	{
 		"name":"Win",
-		"art":"bankLTP",
+		"art":"bank000",
 		"desc":"wealth = goal",
 		"rules":"wealth=goal",
 		"type":"temp"
@@ -84,21 +84,21 @@
 
 	{
 		"name":"Sale",
-		"art":"farmer3T1",
+		"art":"farmer000",
 		"desc":"+4 wealth\n-2 stability",
 		"rules":"wealth+4,stability-2",
 		"type":"temp"
 	},
 	{
 		"name":"Donation",
-		"art":"searchLTP",
+		"art":"search000",
 		"desc":"+1 stability",
 		"rules":"stability+1",
 		"type":"temp"
 	},
 	{
 		"name":"Repayment",
-		"art":"bankKDG",
+		"art":"bank000",
 		"desc":"-{debt} wealth\nremove",
 		"rules":"wealth-debt,remove",
 		"type":"temp"
@@ -110,110 +110,110 @@
 	{
 		"name":"WEALTH CARDS",
 		"desc":"",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"", "rules":"", "type":"COMMENT"
 	},
 
 	{
 		"name":"Global Sale",
-		"art":"globe3T1",
+		"art":"globe000",
 		"desc":"+10 wealth\n-3 stability",
 		"rules":"wealth+10,stability-3",
 		"type":""
 	},
 	{
 		"name":"Local Sale",
-		"art":"carLUX",
+		"art":"car000",
 		"desc":"+2 wealth\n+1 stability",
 		"rules":"wealth+2,stability+1",
 		"type":""
 	},
 	{
 		"name":"Flexibility",
-		"art":"science8DA",
+		"art":"science000",
 		"desc":"+5 wealth\n-2 stability\n+1 hand size\nthis year",
 		"rules":"wealth+5,stability-2,hand+1",
 		"type":""
 	},
 	{
 		"name":"Research",
-		"art":"scienceKDG",
+		"art":"science000",
 		"desc":"+7 wealth\n-2 stability\n+1 play this year",
 		"rules":"wealth+7,stability-2,plays+1",
 		"type":""
 	},
 	{
 		"name":"Patience",
-		"art":"marketKDG",
+		"art":"market000",
 		"desc":"+2 wealth\n-1 goal",
 		"rules":"wealth+2,goal-1",
 		"type":""
 	},
 	{
 		"name":"Planning",
-		"art":"constructionLTP",
+		"art":"construction000",
 		"desc":"+3 wealth\n+1 investment ({investment})",
 		"rules":"wealth+3,investment+1",
 		"type":""
 	},
 	{
 		"name":"Cash Flow",
-		"art":"bank3T1",
+		"art":"bank000",
 		"desc":"-1 investment ({investment})\nadd two Spend cards",
 		"rules":"investment-1,deck+Spend,deck+Spend",
 		"type":""
 	},
 	{
 		"name":"Spend",
-		"art":"market6C9",
+		"art":"market000",
 		"desc":"+12 wealth\n-3 stability\nremove",
 		"rules":"wealth+12,stability+3,remove",
 		"type":"temp"
 	},
 	{
 		"name":"Borrow",
-		"art":"bank8DA",
+		"art":"bank000",
 		"desc":"+20 wealth, add a\nRepayment card",
 		"rules":"wealth+20,deck+Repayment",
 		"type":""
 	},
 	{
 		"name":"Trim Workforce",
-		"art":"gang8DA",
+		"art":"gang000",
 		"desc":"+15 wealth, add a\nStrike card",
 		"rules":"wealth+15,deck+Strike,perm+Labor Movement",
 		"type":""
 	},
 	{
 		"name":"Withdraw",
-		"art":"bank6C9",
+		"art":"bank000",
 		"desc":"+20 wealth\n-10 capital",
 		"rules":"wealth+20,capital-10",
 		"type":""
 	},
 	{
 		"name":"Narrow Options",
-		"art":"courtKDG",
+		"art":"court000",
 		"desc":"+15 wealth\n-1 hand size\nthis year",
 		"rules":"wealth+15,hand-1",
 		"type":""
 	},
 	{
 		"name":"Dividend",
-		"art":"shippingKTY",
+		"art":"shipping000",
 		"desc":"+{investment} wealth\n-3 stability",
 		"rules":"wealth+investment,stability-3",
 		"type":""
 	},
 	{
 		"name":"Sell-off",
-		"art":"bankKTY",
+		"art":"bank000",
 		"desc":"+{investment} wealth\nthree times\n-3 investment ({investment})",
 		"rules":"wealth+investment,wealth+investment,wealth+investment,investment-3",
 		"type":""
 	},
 	{
 		"name":"Acquisition",
-		"art":"constructionLUX",
+		"art":"construction000",
 		"desc":"+{investment} wealth\nfive times\n-{investment} stability",
 		"rules":"wealth+investment,wealth+investment,wealth+investment,wealth+investment,wealth+investment,stability-investment",
 		"type":""
@@ -222,63 +222,63 @@
 
 	{
 		"name":"Buy-in",
-		"art":"shipping3T1",
+		"art":"shipping000",
 		"desc":"+5 investment ({investment})\nremove",
 		"rules":"investment+5,remove",
 		"type":""
 	},
 	{
 		"name":"Collaboration",
-		"art":"police3T1",
+		"art":"police000",
 		"desc":"+8 investment ({investment})\nthis year",
 		"rules":"investment+8,stat+ Collaboration ",
 		"type":""
 	},
 	{
 		"name":" Collaboration ",
-		"art":"police3T1",
+		"art":"police000",
 		"desc":"+8 investment ({investment})\nthis year",
 		"rules":"investment-8|quarter=5|quarter=5",
 		"type":"stat"
 	},
 	{
 		"name":"Project",
-		"art":"construction3T1",
+		"art":"construction000",
 		"desc":"+1 investment ({investment})\nper quarter\nthis year",
 		"rules":"stat+ Project ",
 		"type":""
 	},
 	{
 		"name":" Project ",
-		"art":"construction3T1",
+		"art":"construction000",
 		"desc":"+1 investment ({investment})\nper quarter\nthis year",
 		"rules":"investment+1|quarter+|quarter=5",
 		"type":"stat"
 	},
 	{
 		"name":"Profit Draw",
-		"art":"institutionLTP",
+		"art":"institution000",
 		"desc":"-10 wealth\n+20 capital",
 		"rules":"wealth-10,capital+20",
 		"type":""
 	},	
 	{
 		"name":"Crackdown",
-		"art":"police8DA",
+		"art":"police000",
 		"desc":"-5 stability\nremove the next card\nadded to your deck",
 		"rules":"stability-5,perm+ Crackdown ",
 		"type":""
 	},
 	{
 		"name":" Crackdown ",
-		"art":"police8DA",
+		"art":"police000",
 		"desc":"remove the next card\nadded to your deck",
 		"rules":"prevent|deck+|deck+",
 		"type":"stat"
 	},
 	{
 		"name":"Merger",
-		"art":"institutionLTP",
+		"art":"institution000",
 		"desc":"double investment ({investment})\n-1 hand size permanently\nremove",
 		"rules":"investment+investment,hand-1,maxhand-1,remove",
 		"type":""
@@ -289,82 +289,82 @@
 	{
 		"name":"STABILITY CARDS",
 		"desc":"",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"000", "rules":"", "type":"COMMENT"
 	},
 	
 	{
 		"name":"Charity",
-		"art":"search8DA",
+		"art":"search000",
 		"desc":"+3 stability",
 		"rules":"stability+3",
 		"type":""
 	},
 	{
 		"name":"Benefit",
-		"art":"galleryLTP",
+		"art":"gallery000",
 		"desc":"+5 stability\n-2 wealth",
 		"rules":"stability+5,wealth-2",
 		"type":""
 	},
 	{
 		"name":"Share Resources",
-		"art":"textilesLTP",
+		"art":"textiles000",
 		"desc":"+7 stability,\n-1 play this year",
 		"rules":"stability+7,plays-1",
 		"type":""
 	},
 	{
 		"name":"Sustainability",
-		"art":"ruralLTP",
+		"art":"rural000",
 		"desc":"+2 stability\n+1 play this year",
 		"rules":"stability+2,plays+1",
 		"type":""
 	},
 	{
 		"name":"Fair Wages",
-		"art":"minerLTP",
+		"art":"miner000",
 		"desc":"+5 stability\n+1 hand size\nthis year",
 		"rules":"stability+5,hand+1",
 		"type":""
 	},
 	{
 		"name":"Food Supply",
-		"art":"farmer6TG",
+		"art":"farmer000",
 		"desc":"-10 wealth\n+10 stability",
 		"rules":"wealth-10,stability+10",
 		"type":""
 	},
 	{
 		"name":"Paid Interns",
-		"art":"child6TG",
+		"art":"child000",
 		"desc":"+2 stability\n+1 education ({education})",
 		"rules":"stability+2,education+1",
 		"type":""
 	},
 	{
 		"name":"Opportunity",
-		"art":"construction6TG",
+		"art":"construction000",
 		"desc":"-5 wealth\n+4 stability\n+1 deal this year",
 		"rules":"wealth-5,stability+4,maxdeals+1,stat+ Opportunity ",
 		"type":""
 	},
 	{
 		"name":" Opportunity ",
-		"art":"construction6TG",
+		"art":"construction000",
 		"desc":"+1 deal this year",
 		"rules":"maxdeals-1|year+|quarter=5",
 		"type":"temp"
 	},
 	{
 		"name":"Public Event",
-		"art":"circus3T1",
+		"art":"circus000",
 		"desc":"-6 wealth\nadd two Event cards",
-		"rules":"wealth-5,deck+Event,deck+Event",
+		"rules":"wealth-6,deck+Event,deck+Event",
 		"type":""
 	},
 	{
 		"name":"Event",
-		"art":"circus3T1",
+		"art":"circus000",
 		"desc":"+8 stability\nremove",
 		"rules":"stability+8,remove",
 		"type":"temp"
@@ -372,28 +372,28 @@
 	
 	{
 		"name":"Graduation",
-		"art":"institution6TG",
+		"art":"institution000",
 		"desc":"+{education} stability",
 		"rules":"stability+education",
 		"type":""
 	},
 	{
 		"name":"Hire Graduates",
-		"art":"institution3T1",
+		"art":"institution000",
 		"desc":"-8 wealth\n+{education} stability\nthree times",
 		"rules":"wealth-8,stability+education,stability+education,stability+education",
 		"type":""
 	},
 	{
 		"name":"Public Schools",
-		"art":"institutionLUX",
+		"art":"institution000",
 		"desc":"-20 stability\n+{education} stability\nfive times",
 		"rules":"stability-20,stability+education,stability+education,stability+education,stability+education,stability+education",
 		"type":""
 	},
 	{
 		"name":"Burn Fuel",
-		"art":"gadgetLUX",
+		"art":"gadget000",
 		"desc":"+{energy} stability\nset energy ({energy}) to 0",
 		"rules":"stability+energy,energy=0",
 		"type":""
@@ -401,42 +401,42 @@
 
 	{
 		"name":"Fundraiser",
-		"art":"galleryKTY",
+		"art":"gallery000",
 		"desc":"+1 education ({education})\nwhen wealth decrases\nthis quarter",
 		"rules":"stat+ Fundraiser ",
 		"type":""
 	},
 	{
 		"name":" Fundraiser ",
-		"art":"galleryKTY",
+		"art":"gallery000",
 		"desc":"+1 education ({education})\nwhen wealth decrases\nthis quarter",
 		"rules":"education+1|wealth-|quarter+",
 		"type":"stat"
 	},
 	{
 		"name":"Scholarship",
-		"art":"institutionLTP",
+		"art":"institution000",
 		"desc":"-10 wealth\n+3 education\nremove",
 		"rules":"wealth-10,education+3,remove",
 		"type":""
 	},
 	{
 		"name":"Offer Benefits",
-		"art":"gang3T1",
+		"art":"gang000",
 		"desc":"-10 wealth\nset unrest to 0\nremove",
 		"rules":"wealth-10,unrest=0,remove",
 		"type":""
 	},
 	{
 		"name":"Fusion Power",
-		"art":"gadgetKTY",
+		"art":"gadget000",
 		"desc":"double energy ({energy})",
 		"rules":"energy+energy",
 		"type":""
 	},
 	{
 		"name":"University",
-		"art":"institutionKTY",
+		"art":"institution000",
 		"desc":"double education ({education})\n-1 deal permanently\nremove",
 		"rules":"education+education,maxdeals-1,remove",
 		"type":""
@@ -444,35 +444,35 @@
 	
 	{
 		"name":"Social Mobility",
-		"art":"banker6TG",
+		"art":"banker000",
 		"desc":"+10 stability\nadd two Tycoons\nremove",
 		"rules":"stability+10,deck+Tycoon,deck+Tycoon,remove",
 		"type":""
 	},
 	{
 		"name":"Tycoon",
-		"art":"banker6TG",
+		"art":"banker000",
 		"desc":"+10 wealth\n+{elite} stability\n(decrease by 1)",
 		"rules":"wealth+10,stability+elite,elite-1",
 		"type":"temp"
 	},
 	{
 		"name":"Childcare",
-		"art":"child3T1",
+		"art":"child000",
 		"desc":"-14 wealth\nadd a Housekeeper\neach quarter this year",
 		"rules":"wealth-14,stat+ Childcare ",
 		"type":""
 	},
 	{
 		"name":" Childcare ",
-		"art":"child3T1",
+		"art":"child000",
 		"desc":"add a Housekeeper\neach quarter this year",
 		"rules":"deck+Housekeeper|quarter+|quarter=5",
-		"type":""
+		"type":"perm"
 	},
 	{
 		"name":"Housekeeper",
-		"art":"domesticLUX",
+		"art":"domestic000",
 		"desc":"-7 wealth\n+15 stability\nremove",
 		"rules":"wealth-7,stability+15,remove",
 		"type":"temp"
@@ -484,12 +484,12 @@
 	{
 		"name":"UTILITY CARDS",
 		"desc":"",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"000", "rules":"", "type":"COMMENT"
 	},
 
 	{
 		"name":"Pollution",
-		"art":"factory6C9",
+		"art":"factory000",
 		"desc":"exists",
 		"rules":"",
 		"type":"temp"
@@ -497,7 +497,7 @@
 		
 	{
 		"name":"Strike",
-		"art":"gangLUX",
+		"art":"gang000",
 		"desc":"-{unrest} wealth\n-{unrest} stability\nremove",
 		"rules":"wealth-unrest,stability-unrest,remove",
 		"type":"temp"
@@ -505,28 +505,28 @@
 		
 	{
 		"name":"Purge",
-		"art":"policeLUX",
+		"art":"police000",
 		"desc":"remove first\ncard in hand\nremove",
 		"rules":"delete,remove",
 		"type":""
 	},
 	{
 		"name":"Temper",
-		"art":"ruralLTP",
+		"art":"rural000",
 		"desc":"-5 goal\nremove",
 		"rules":"goal-5,remove",
 		"type":""
 	},
 	{
 		"name":"Expand",
-		"art":"arms8DA",
+		"art":"arms000",
 		"desc":"+1 hand size permanently\nremove",
 		"rules":"maxhand+1,hand+1,remove",
 		"type":""
 	},
 	{
 		"name":"Strategize",
-		"art":"armsKTY",
+		"art":"arms000",
 		"desc":"+1 deal permanently\nremove",
 		"rules":"maxdeals+1,remove",
 		"type":""
@@ -541,56 +541,56 @@
 
 	{
 		"name":"Distrust",
-		"art":"policeKDG",
+		"art":"police000",
 		"desc":"+1 play permanently\n-1 stability when\nwealth increases",
 		"rules":"maxplays+1,stability-1|wealth+",
 		"type":"perm"
 	},
 	{
 		"name":"Diversification",
-		"art":"shipping6TG",
+		"art":"shipping000",
 		"desc":"+1 play permanently\n-2 capital when\nwealth increases",
 		"rules":"maxplays+1,capital-2|wealth+",
 		"type":"perm"
 	},
 	{
 		"name":"Monopoly",
-		"art":"banker3T1",
+		"art":"banker000",
 		"desc":"+1 play permanently\n-10 stability\neach year",
 		"rules":"maxplays+1,stability-10|year+",
 		"type":"perm"
 	},
 	{
 		"name":"Consolidation",
-		"art":"globe8DA",
+		"art":"globe000",
 		"desc":"+1 play permanently\n-1 investment ({investment})\neach year",
 		"rules":"maxplays+1,investment-1|year+",
 		"type":"perm"
 	},
 	{
 		"name":"Moral Panic",
-		"art":"policeLTP",
+		"art":"police000",
 		"desc":"+1 play permanently\n-1 education ({education})\neach year",
 		"rules":"maxplays+1,education-1|year+",
 		"type":"perm"
 	},
 	{
 		"name":"Migrant Labor",
-		"art":"worker6C9",
+		"art":"worker000",
 		"desc":"+1 play permanently\nadd a Strike\neach year",
 		"rules":"maxplays+1,deck+Strike|year+,perm+Labor Movement",
 		"type":"perm"
 	},
 	{
 		"name":"Deficit Spending",
-		"art":"bankKTY",
+		"art":"bank000",
 		"desc":"+1 play permanently\nadd a Repayment\neach year",
 		"rules":"maxplays+1,deck+Repayment|year+",
 		"type":"perm"
 	},
 	{
 		"name":"Expansion",
-		"art":"factory6C9",
+		"art":"factory000",
 		"desc":"+1 play permanently\nadd three Pollutions",
 		"rules":"maxplays+1,deck+Pollution,deck+Pollution,deck+Pollution",
 		"type":"perm"
@@ -601,19 +601,19 @@
 	{
 		"name":"STATUS CARDS",
 		"desc":"Added automatically; cannot be purchased",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"000", "rules":"", "type":"COMMENT"
 	},
 	
 	{
 		"name":"Deficit",
-		"art":"bank8DA",
+		"art":"bank000",
 		"desc":"+1 debt ({debt}) per year",
 		"rules":"debt+1|year+",
 		"type":"stat"
 	},
 	{
 		"name":"Labor Movement",
-		"art":"gangKDG",
+		"art":"gang000",
 		"desc":"+1 unrest ({unrest}) per year",
 		"rules":"unrest+1|year+",
 		"type":"stat"
@@ -628,84 +628,84 @@
 	
 	{
 		"name":"Profit",
-		"art":"gadgetKTY",
+		"art":"gadget000",
 		"desc":"+{investment} wealth\nin quarter 1\neach year",
 		"rules":"wealth+investment|quarter=1",
 		"type":"perm"
 	},	
 	{
 		"name":"Public Education",
-		"art":"institution3T1",
+		"art":"institution000",
 		"desc":"+{education} stability\neach year",
 		"rules":"stability+education|year+",
 		"type":"perm"
 	},	
 	{
 		"name":"Local Schools",
-		"art":"car8DA",
+		"art":"car000",
 		"desc":"+2 stability when\neducation increases",
 		"rules":"stability+2|education+",
 		"type":"perm"
 	},	
 	{
 		"name":"Consulting",
-		"art":"police6TG",
+		"art":"police000",
 		"desc":"+20 wealth when\nhand size increases",
 		"rules":"wealth+20|hand+",
 		"type":"perm"
 	},	
 	{
 		"name":"Contracting",
-		"art":"tractor3T1",
+		"art":"tractor000",
 		"desc":"+10 stability when\nhand size increases",
 		"rules":"stability+10|hand+",
 		"type":"perm"
 	},
 	{
 		"name":"Power Grid",
-		"art":"rural6TG",
+		"art":"rural000",
 		"desc":"\n+{energy} stability\neach year and\nset energy ({energy}) to 0",
 		"rules":"stability+{energy}|quarter=1,energy=0|quarter=1",
 		"type":"perm"
 	},	
 	{
 		"name":"Qualifications",
-		"art":"gallery8DA",
+		"art":"gallery000",
 		"desc":"+10 capital when\neducation increases",
 		"rules":"capital+10|education+",
 		"type":"perm"
 	},	
 	{
 		"name":"Socialism",
-		"art":"gangKTY",
+		"art":"gang000",
 		"desc":"+1 stability when\nwealth decreases",
 		"rules":"stability+1|wealth-",
 		"type":"perm"
 	},	
 	{
 		"name":"Resource Recovery",
-		"art":"loggerLUX",
+		"art":"logger000",
 		"desc":"+5 wealth when\ncard is removed",
 		"rules":"wealth+5|remove",
 		"type":"perm"
 	},
 	{
 		"name":"Recycling",
-		"art":"loggerLTP",
+		"art":"logger000",
 		"desc":"+3 stability when\ncard is removed",
 		"rules":"stability+3|remove",
 		"type":"perm"
 	},	
 	{
 		"name":"Hedge Fund",
-		"art":"bankerLUX",
+		"art":"banker000",
 		"desc":"+2 capital when\nwealth decreases",
 		"rules":"capital+2|wealth-",
 		"type":"perm"
 	},	
 	{
 		"name":"Power Plant",
-		"art":"construction3T1",
+		"art":"construction000",
 		"desc":"+1 investment ({investment})\nwhen energy increases",
 		"rules":"investment+1|energy+",
 		"type":"perm"
@@ -715,61 +715,61 @@
 	{
 		"name":"ANNUAL CHALLENGES",
 		"desc":"",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"000", "rules":"", "type":"COMMENT"
 	},
 
 	{
 		"name":"Windfall",
-		"art":"bank3T1",
+		"art":"bank000",
 		"desc":"start the year\nwith 10 wealth",
 		"rules":"wealth+10",
 		"type":"year1"
 	},
 	{
 		"name":"Inheritance",
-		"art":"courtLUX",
+		"art":"court000",
 		"desc":"+50 capital",
 		"rules":"capital+50",
 		"type":"year1"
 	},
 	{
 		"name":"Generosity",
-		"art":"market6TG",
+		"art":"market000",
 		"desc":"+5 stability\nper quarter",
 		"rules":"stability+5|quarter+",
 		"type":"year1"
 	},
 	{
 		"name":"College Funds",
-		"art":"institutionLTP",
+		"art":"institution000",
 		"desc":"+5 education ({education})",
 		"rules":"education+5",
 		"type":"year1"
 	},	
 	{
 		"name":"Public Works",
-		"art":"bridgeLTP",
+		"art":"bridge000",
 		"desc":"+10 energy ({energy})",
 		"rules":"energy+10",
 		"type":"year1"
 	},	
 	{
 		"name":"Automation",
-		"art":"gadget6TG",
+		"art":"gadget000",
 		"desc":"+3 wealth\nper quarter",
 		"rules":"wealth+3|quarter+",
 		"type":"year1"
 	},	
 	{
 		"name":"Prosperity",
-		"art":"banker3T1",
+		"art":"banker000",
 		"desc":"+3 elite",
 		"rules":"elite+3",
 		"type":"year1"
 	},	
 	{
 		"name":"Rural Energy",
-		"art":"ruralLTP",
+		"art":"rural000",
 		"desc":"+5 energy ({energy})\nper quarter",
 		"rules":"energy+5|quarter+",
 		"type":"year1"
@@ -777,42 +777,42 @@
 
 	{
 		"name":"Oversight",
-		"art":"police6C9",
+		"art":"police000",
 		"desc":"-5 stability\neach deal",
 		"rules":"stability-5|deals-",
 		"type":"year2"
 	},	
 	{
 		"name":"Class Separation",
-		"art":"search6TG",
+		"art":"search000",
 		"desc":"-1 stability when\nwealth increases",
 		"rules":"stability-1|wealth+",
 		"type":"year2"
 	},	
 	{
 		"name":"Overconsumption",
-		"art":"tractor8DA",
+		"art":"tractor000",
 		"desc":"-10 stability when\nhand size increases",
 		"rules":"stability-10|hand+",
 		"type":"year2"
 	},	
 	{
 		"name":"Back Taxes",
-		"art":"court8DA",
+		"art":"court000",
 		"desc":"-5 wealth\neach deal",
 		"rules":"wealth-5|deals-",
 		"type":"year2"
 	},	
 	{
 		"name":"Long Work Hours",
-		"art":"workerLUX",
+		"art":"worker000",
 		"desc":"Add a Strike\nat the start of\nquarter three",
 		"rules":"deck+Strike|quarter=3,perm+Labor Movement",
 		"type":"year2"
 	},	
 	{
 		"name":"Scarce Resources",
-		"art":"mineLUX",
+		"art":"mine000",
 		"desc":"-20 stability when\nremoving a card",
 		"rules":"stability-20|remove",
 		"type":"year2"
@@ -821,49 +821,49 @@
 
 	{
 		"name":"Global Pandemic",
-		"art":"science8DA",
+		"art":"science000",
 		"desc":"-20 stability\nper quarter",
 		"rules":"stability-20|quarter+",
 		"type":"year3"
 	},	
 	{
 		"name":"Class Struggle",
-		"art":"banker8DA",
+		"art":"banker000",
 		"desc":"-2 stability when\nwealth increases",
 		"rules":"stability-2|wealth+",
 		"type":"year3"
 	},	
 	{
 		"name":"Aggression",
-		"art":"arms8DA",
+		"art":"arms000",
 		"desc":"-20 stability when\nadding a play",
 		"rules":"stability-20|plays+",
 		"type":"year3"
 	},	
 	{
 		"name":"Wage Erosion",
-		"art":"miner8DA",
+		"art":"miner000",
 		"desc":"Add a Strike\neach quarter",
 		"rules":"deck+Strike|quarter+,perm+Labor Movement",
 		"type":"year3"
 	},	
 	{
 		"name":"Manufacturing",
-		"art":"factory6C9",
+		"art":"factory000",
 		"desc":"Add Pollution",
 		"rules":"deck+Pollution",
 		"type":"year3"
 	},	
 	{
 		"name":"Campaign Finance",
-		"art":"policeKTY",
+		"art":"police000",
 		"desc":"-10 wealth\neach deal",
 		"rules":"wealth-10|deals-",
 		"type":"year3"
 	},	
 	{
 		"name":"Recession",
-		"art":"child8DA",
+		"art":"child000",
 		"desc":"-1 hand size",
 		"rules":"hand-1",
 		"type":"year3"
@@ -872,28 +872,28 @@
 
 	{
 		"name":"Class Warfare",
-		"art":"arms8DA",
+		"art":"arms000",
 		"desc":"-5 stability when\nwealth increases",
 		"rules":"stability-5|wealth+",
 		"type":"year4"
 	},	
 	{
 		"name":"Deregulation",
-		"art":"factory6C9",
+		"art":"factory000",
 		"desc":"Add Pollution\neach quarter",
 		"rules":"deck+Pollution|quarter+",
 		"type":"year4"
 	},	
 	{
 		"name":"Manifest Destiny",
-		"art":"arms8DA",
+		"art":"arms000",
 		"desc":"-10 stability\neach deal",
 		"rules":"stability-10|deals-",
 		"type":"year4"
 	},	
 	{
 		"name":"Depression",
-		"art":"domestic8DA",
+		"art":"domestic000",
 		"desc":"-2 hand size",
 		"rules":"hand-2",
 		"type":"year4"
@@ -909,35 +909,35 @@
 	
 	{
 		"name":"Rationing",
-		"art":"farmerLUX",
+		"art":"farmer000",
 		"desc":"set hand size to 8\nset deals to zero",
 		"rules":"hand=8,deals=1",
 		"type":"boss1"
 	},	
 	{
 		"name":"Contraction",
-		"art":"constructionLTP",
+		"art":"construction000",
 		"desc":"-1 play\n+1 deal",
 		"rules":"plays-1,deals+1",
 		"type":"boss2"
 	},	
 	{
 		"name":"Financial Crisis",
-		"art":"bank6C9",
+		"art":"bank000",
 		"desc":"-50 wealth",
 		"rules":"wealth-50",
 		"type":"boss3"
 	},	
 	{
 		"name":"Authoritarianism",
-		"art":"bankerKTY",
+		"art":"banker000",
 		"desc":"-50 stability when\nadding a play",
 		"rules":"stability-50|plays+",
 		"type":"boss4"
 	},	
 	{
 		"name":"Crash",
-		"art":"gang8DA",
+		"art":"gang000",
 		"desc":"set stability to 10\n-50 wealth\n-3 stability when\nwealth increases",
 		"rules":"stability=10,wealth-50,stability-3|wealth+",
 		"type":"boss5"
@@ -949,7 +949,7 @@
 	{
 		"name":"END OF LIST",
 		"desc":"",
-		"art":"LTP", "rules":"", "type":"COMMENT"
+		"art":"000", "rules":"", "type":"COMMENT"
 	}
 
 	]
