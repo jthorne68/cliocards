@@ -19,6 +19,7 @@ public class ReportDialog : MonoBehaviour
 
     public AudioClip winmusic;
     public AudioClip losemusic;
+    public AudioClip addingsound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +42,19 @@ public class ReportDialog : MonoBehaviour
         }
         else if (reporttype == SUMMARY)
         {
+            audio.clip = addingsound;
+            audio.Play();
             summary.SetActive(reporttype == SUMMARY);
+
+            // fill in year text and position the progress indicator
+            for (int y = 5; y <= 25; y += 5)
+            {
+                TextMeshPro tmp = GameObject.Find("year" + y).GetComponent<TextMeshPro>();
+                tmp.text = "" + (controller.state.getval(TableState.STARTYEAR) + y);
+            }
+            Transform t = GameObject.Find("timelinetick").transform;
+            float yearwid = (GameObject.Find("timelinetick5").transform.position.x - t.position.x) / 25;
+            t.position += (Vector3.right * controller.state.getval(TableState.YEAR) * yearwid);
         }
         message.GetComponent<TextMeshPro>().text = msg;
     }
