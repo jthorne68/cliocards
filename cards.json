@@ -9,7 +9,7 @@
 
 	{
 		"name":"1900","art":"", "desc":"",
-		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation",
+		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Childcare",
 		"type":"temp"
 	},
 
@@ -26,38 +26,38 @@
 	},
 	
 	{
-		"name":"1930","art":"", "desc":"Smaller starting hand",
+		"name":"1930","art":"", "desc":"Fewer starting deals",
+		"rules":"maxdeals=2",
+		"type":"temp"
+	},
+
+	{
+		"name":"1940","art":"", "desc":"Smaller starting hand",
 		"rules":"maxhand=4",
 		"type":"temp"
 	},
 
 	{
-		"name":"1940","art":"", "desc":"Debt goes up each year",
+		"name":"1950","art":"", "desc":"Debt goes up each year",
 		"rules":"perm+Deficit",
 		"type":"temp"
 	},
 
 	{
-		"name":"1950","art":"", "desc":"Larger starting goal",
+		"name":"1960","art":"", "desc":"Larger starting goal",
 		"rules":"goal=35",
 		"type":"temp"
 	},
 
 	{
-		"name":"1960","art":"", "desc":"Stability starts at 50%",
+		"name":"1970","art":"", "desc":"Stability starts at 50%",
 		"rules":"stability=50",
 		"type":"temp"
 	},
 
 	{
-		"name":"1970","art":"", "desc":"Higher annual growth",
+		"name":"1980","art":"", "desc":"Higher annual growth",
 		"rules":"growth=15",
-		"type":"temp"
-	},
-
-	{
-		"name":"1980","art":"", "desc":"Fewer starting deals",
-		"rules":"maxdeals=2",
 		"type":"temp"
 	},
 
@@ -130,14 +130,14 @@
 	{
 		"name":"Flexibility",
 		"art":"science000",
-		"desc":"+5 wealth\n-2 stability\n+1 hand size\nthis year",
+		"desc":"+5 wealth\n-2 stability\n+1 hand size\nuntil end of year",
 		"rules":"wealth+5,stability-2,hand+1",
 		"type":""
 	},
 	{
 		"name":"Research",
 		"art":"science000",
-		"desc":"+7 wealth\n-2 stability\n+1 play this year",
+		"desc":"+7 wealth\n-2 stability\n+1 play until\nend of year",
 		"rules":"wealth+7,stability-2,plays+1",
 		"type":""
 	},
@@ -166,8 +166,15 @@
 		"name":"Spend",
 		"art":"market000",
 		"desc":"+12 wealth\n-3 stability\nremove",
-		"rules":"wealth+12,stability+3,remove",
+		"rules":"wealth+12,stability-3,remove",
 		"type":"temp"
+	},
+	{
+		"name":"Grind",
+		"art":"worker000",
+		"desc":"+{grind} wealth\nincrease by one",
+		"rules":"wealth+grind,grind+1",
+		"type":""
 	},
 	{
 		"name":"Borrow",
@@ -193,7 +200,7 @@
 	{
 		"name":"Narrow Options",
 		"art":"court000",
-		"desc":"+15 wealth\n-1 hand size\nthis year",
+		"desc":"+15 wealth\n-1 hand size\nuntil end of year",
 		"rules":"wealth+15,hand-1",
 		"type":""
 	},
@@ -214,8 +221,8 @@
 	{
 		"name":"Acquisition",
 		"art":"construction000",
-		"desc":"+{investment} wealth\nfive times\n-{investment} stability",
-		"rules":"wealth+investment,wealth+investment,wealth+investment,wealth+investment,wealth+investment,stability-investment",
+		"desc":"+{investment} wealth\nthree times\n-{investment} stability",
+		"rules":"wealth+investment,wealth+investment,wealth+investment,stability-investment",
 		"type":""
 	},
 
@@ -230,28 +237,28 @@
 	{
 		"name":"Collaboration",
 		"art":"police000",
-		"desc":"+8 investment ({investment})\nthis year",
+		"desc":"+8 investment ({investment})\nuntil end of year",
 		"rules":"investment+8,stat+ Collaboration ",
 		"type":""
 	},
 	{
 		"name":" Collaboration ",
 		"art":"police000",
-		"desc":"+8 investment ({investment})\nthis year",
+		"desc":"+8 investment ({investment})\nuntil end of year",
 		"rules":"investment-8|quarter=5|quarter=5",
 		"type":"stat"
 	},
 	{
 		"name":"Project",
 		"art":"construction000",
-		"desc":"+1 investment ({investment})\nper quarter\nthis year",
+		"desc":"+1 investment ({investment})\nper quarter\nuntil end of year",
 		"rules":"stat+ Project ",
 		"type":""
 	},
 	{
 		"name":" Project ",
 		"art":"construction000",
-		"desc":"+1 investment ({investment})\nper quarter\nthis year",
+		"desc":"+1 investment ({investment})\nper quarter\nuntil end of year",
 		"rules":"investment+1|quarter+|quarter=5",
 		"type":"stat"
 	},
@@ -263,15 +270,15 @@
 		"type":""
 	},	
 	{
-		"name":"Crackdown",
-		"art":"police000",
+		"name":"Foresight",
+		"art":"factory000",
 		"desc":"-5 stability\nremove the next card\nadded to your deck",
-		"rules":"stability-5,perm+ Crackdown ",
+		"rules":"stability-5,perm+ Foresight ",
 		"type":""
 	},
 	{
-		"name":" Crackdown ",
-		"art":"police000",
+		"name":" Foresight ",
+		"art":"factory000",
 		"desc":"remove the next card\nadded to your deck",
 		"rules":"prevent|deck+|deck+",
 		"type":"stat"
@@ -295,8 +302,8 @@
 	{
 		"name":"Charity",
 		"art":"search000",
-		"desc":"+3 stability",
-		"rules":"stability+3",
+		"desc":"+3 stability\n-1 wealth",
+		"rules":"stability+3,wealth-1",
 		"type":""
 	},
 	{
@@ -309,22 +316,22 @@
 	{
 		"name":"Share Resources",
 		"art":"textiles000",
-		"desc":"+7 stability,\n-1 play this year",
+		"desc":"+7 stability,\n-1 play until\nend of year",
 		"rules":"stability+7,plays-1",
 		"type":""
 	},
 	{
 		"name":"Sustainability",
 		"art":"rural000",
-		"desc":"+2 stability\n+1 play this year",
-		"rules":"stability+2,plays+1",
+		"desc":"+2 stability\n-10 wealth\n+1 play until\nend of year",
+		"rules":"stability+2,wealth-10,plays+1",
 		"type":""
 	},
 	{
 		"name":"Fair Wages",
 		"art":"miner000",
-		"desc":"+5 stability\n+1 hand size\nthis year",
-		"rules":"stability+5,hand+1",
+		"desc":"+5 stability\b-8 wealth\nn+1 hand size\nuntil end of year",
+		"rules":"stability+5,wealth-8,hand+1",
 		"type":""
 	},
 	{
@@ -344,14 +351,14 @@
 	{
 		"name":"Opportunity",
 		"art":"construction000",
-		"desc":"-5 wealth\n+4 stability\n+1 deal this year",
+		"desc":"-5 wealth\n+4 stability\n+1 deal until\nend of year",
 		"rules":"wealth-5,stability+4,maxdeals+1,stat+ Opportunity ",
 		"type":""
 	},
 	{
 		"name":" Opportunity ",
 		"art":"construction000",
-		"desc":"+1 deal this year",
+		"desc":"+1 deal until\nend of year",
 		"rules":"maxdeals-1|year+|quarter=5",
 		"type":"temp"
 	},
@@ -380,8 +387,8 @@
 	{
 		"name":"Hire Graduates",
 		"art":"institution000",
-		"desc":"-8 wealth\n+{education} stability\nthree times",
-		"rules":"wealth-8,stability+education,stability+education,stability+education",
+		"desc":"-7 wealth\n+{education} stability\nthree times",
+		"rules":"wealth-7,stability+education,stability+education,stability+education",
 		"type":""
 	},
 	{
@@ -392,13 +399,19 @@
 		"type":""
 	},
 	{
+		"name":"Solar Farm",
+		"art":"rural000",
+		"desc":"-6 wealth\n+5 energy",
+		"rules":"wealth-6,energy+5",
+		"type":""
+	},
+	{
 		"name":"Burn Fuel",
 		"art":"gadget000",
 		"desc":"+{energy} stability\nset energy ({energy}) to 0",
 		"rules":"stability+energy,energy=0",
 		"type":""
 	},
-
 	{
 		"name":"Fundraiser",
 		"art":"gallery000",
@@ -459,16 +472,16 @@
 	{
 		"name":"Childcare",
 		"art":"child000",
-		"desc":"-14 wealth\nadd a Housekeeper\neach quarter this year",
+		"desc":"-14 wealth\nadd a Housekeeper\neach quarter\nuntil end of year",
 		"rules":"wealth-14,stat+ Childcare ",
 		"type":""
 	},
 	{
 		"name":" Childcare ",
 		"art":"child000",
-		"desc":"add a Housekeeper\neach quarter this year",
+		"desc":"add a Housekeeper\neach quarter\nuntil end of year",
 		"rules":"deck+Housekeeper|quarter+|quarter=5",
-		"type":"perm"
+		"type":"stat"
 	},
 	{
 		"name":"Housekeeper",
@@ -501,14 +514,34 @@
 		"desc":"-{unrest} wealth\n-{unrest} stability\nremove",
 		"rules":"wealth-unrest,stability-unrest,remove",
 		"type":"temp"
-	},
-		
+	},		
 	{
-		"name":"Purge",
-		"art":"police000",
+		"name":"Clean Up",
+		"art":"logger000",
 		"desc":"remove first\ncard in hand\nremove",
 		"rules":"delete,remove",
 		"type":""
+	},
+	{
+		"name":"Efficiency",
+		"art":"logger000",
+		"desc":"when hand size decreases\nremove first\ncard in hand",
+		"rules":"delete,remove",
+		"type":""
+	},
+	{
+		"name":"Efficiency",
+		"art":"logger000",
+		"desc":"remove first\ncard in hand\nwhen hand size\ndecreases this year",
+		"rules":"stat+ Efficiency ",
+		"type":""
+	},
+	{
+		"name":" Efficiency ",
+		"art":"logger000",
+		"desc":"remove first\ncard in hand\nwhen hand size\ndecreases",
+		"rules":"delete|hand-|quarter=5",
+		"type":"stat"
 	},
 	{
 		"name":"Temper",
@@ -756,8 +789,8 @@
 	{
 		"name":"Automation",
 		"art":"gadget000",
-		"desc":"+3 wealth\nper quarter",
-		"rules":"wealth+3|quarter+",
+		"desc":"-10 stability\n+3 wealth\nper quarter",
+		"rules":"stability-10,wealth+3|quarter+",
 		"type":"year1"
 	},	
 	{
@@ -806,15 +839,15 @@
 	{
 		"name":"Long Work Hours",
 		"art":"worker000",
-		"desc":"Add a Strike\nat the start of\nquarter three",
-		"rules":"deck+Strike|quarter=3,perm+Labor Movement",
+		"desc":"-20 stability\nAdd a Strike\nat the start of\nquarter three",
+		"rules":"stability-20,deck+Strike|quarter=3,perm+Labor Movement",
 		"type":"year2"
 	},	
 	{
 		"name":"Scarce Resources",
 		"art":"mine000",
-		"desc":"-20 stability when\nremoving a card",
-		"rules":"stability-20|remove",
+		"desc":"-30 stability when\nremoving a card",
+		"rules":"stability-30|remove",
 		"type":"year2"
 	},	
 
@@ -843,29 +876,29 @@
 	{
 		"name":"Wage Erosion",
 		"art":"miner000",
-		"desc":"Add a Strike\neach quarter",
-		"rules":"deck+Strike|quarter+,perm+Labor Movement",
+		"desc":"-30 stability\nAdd a Strike\neach quarter",
+		"rules":"stability-30,deck+Strike|quarter+,perm+Labor Movement",
 		"type":"year3"
 	},	
 	{
 		"name":"Manufacturing",
 		"art":"factory000",
-		"desc":"Add Pollution",
-		"rules":"deck+Pollution",
+		"desc":"-20 stability\nAdd Pollution",
+		"rules":"stability-20,deck+Pollution",
 		"type":"year3"
 	},	
 	{
 		"name":"Campaign Finance",
 		"art":"police000",
-		"desc":"-10 wealth\neach deal",
-		"rules":"wealth-10|deals-",
+		"desc":"-15 stability,-10 wealth\neach deal",
+		"rules":"stability-15,wealth-10|deals-",
 		"type":"year3"
 	},	
 	{
 		"name":"Recession",
 		"art":"child000",
-		"desc":"-1 hand size",
-		"rules":"hand-1",
+		"desc":"-25 stability\n-1 hand size",
+		"rules":"stability-25,hand-1",
 		"type":"year3"
 	},	
 

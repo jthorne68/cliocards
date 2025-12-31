@@ -128,14 +128,14 @@ public class TableController : MonoBehaviour
 		int a = (amount.IndexOf('-') == -1) ? 1 : -1;
         if (key == TableState.WEALTH)
         {
-            color = new Color(0.7f, 1.0f, 0.7f);
+            color = CardLibrary.instance.colorfor('B');
             pos = (Vector2)t.position + // wealthhandler.transform.position + 
                 new Vector2(Random.Range(-wobble, wobble), Random.Range(-wobble, wobble)); 
             move = new Vector2(Random.Range(-wobble, wobble), a > 0 ? floatsp : -floatsp);
         }
         if (key == TableState.STABILITY)
         {
-            color = new Color(0.7f, 0.7f, 1.0f);
+            color = CardLibrary.instance.colorfor('C');
             pos = (Vector2)t.position + // stablehandler.transform.position + 
                 new Vector2(Random.Range(-wobble, wobble), Random.Range(-wobble, wobble));
             move = new Vector2(Random.Range(-wobble, wobble), a > 0 ? floatsp : -floatsp);
@@ -480,9 +480,51 @@ public class TableController : MonoBehaviour
     public async Task animaterule(CardRule rule, Transform transform = null)
     {
         if (transform == null) {
-            for (int i = 0; i < state.perms.Count; i++) if (state.perms[i] == rule.id) transform = permslots[i].transform;
-            if (rule.id == state.challenge) transform = challengeslot.transform;
+            GameObject c = null;
+            for (int i = 0; i < state.perms.Count; i++) {
+                if (state.perms[i] == rule.id) {
+                    transform = permslots[i].transform;
+                    c = permcards[i];
+                }
+            }
+            if (rule.id == state.challenge)
+            {
+                transform = challengeslot.transform;
+                c = challengecard;
+            }
+
+            // edge case for adding a card
+            if (rule.stat == TableState.DECK)
+            {
+                audiosource.PlayOneShot(addsound);
+                int cid = CardLibrary.idfor(rule.amount.Trim('+'));
+                if (cid != 0)
+                {
+                    GameObject ac = createcard(cid, c, zoomslot);
+                    await Task.Delay(500);
+                    Destroy(ac);
+                    ac = createcard(cid, zoomslot, deckslot);
+                    await Task.Delay(500);
+                    Destroy(ac);
+                    transform = null; // no further animation needed
+                }
+            }
+
             if (transform == null) return; // nowhere to animate?
+
+            if (c) {
+                c.GetComponent<CardHandler>().ismoving = true;
+                if (c == challengecard)
+                {
+                    c.transform.position += (Vector3)(Vector2.up * 0.3f);
+                    c.transform.localScale *= 1.3f;
+                }
+                else
+                {
+                    c.transform.position += (Vector3)(Vector2.down * 0.3f);
+                    c.transform.localScale *= 2.0f;
+                }
+            }
         }
         bool isup = rule.amount.IndexOf('-') == -1;
         if (rule.stat == TableState.WEALTH)
@@ -557,7 +599,7 @@ public class TableController : MonoBehaviour
                 else if (rule.stat == TableState.PREVENT)
                 {
                     // TODO: animation for prevention rule triggered
-                    GameObject c = createcard(CardLibrary.idfor("Crackdown"), deckslot, deckslot);
+                    GameObject c = createcard(CardLibrary.idfor("Repayment"), deckslot, deckslot);
                     CardHandler h = c.GetComponent<CardHandler>();
                     h.scale = Vector2.zero;
                     h.pos.y -= 0.3f; // move up a bit
@@ -584,8 +626,10 @@ public class TableController : MonoBehaviour
 
         await discardhand();
 
+        List<CardRule> rules;
         if (state.getval(TableState.QUARTER) < 4) { // shuffle and continue
-            state.addval(TableState.QUARTER, 1);
+            rules = state.addval(TableState.QUARTER, 1);
+            foreach (CardRule rule in rules) await animaterule(rule);
             // check for rules that trigger on a specific quarter
             // state.processrules(TableState.QUARTER, "=" + state.getval(TableState.QUARTER)); // turns out: redundant
             state.setval(TableState.DEALS, state.getval(TableState.MAXDEALS));
@@ -597,7 +641,8 @@ public class TableController : MonoBehaviour
         else // check for win/loss condition
         {
             // process end-of-year rules
-            state.processrules(TableState.QUARTER, "=5");
+            rules = state.processrules(TableState.QUARTER, "=5");
+            foreach (CardRule rule in rules) await animaterule(rule);
 
             shuffledeck(); // end of year
 

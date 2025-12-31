@@ -288,8 +288,10 @@ public class TableState
                 case '=': a = a - v; break;
                 case '-': a = -a; break;
             }
+            int oldv = v;
             v += a;
             setval(stat, v);
+            if (v == oldv) a = 0; // value didn't change, don't trigger +/- rules
         }
 
         bool ischallenge = challenge != 0;
@@ -368,6 +370,8 @@ public class TableState
                 if (trych != -1) challenge = trych;
             }
         }
+
+        challenge = CardLibrary.idfor("Wage Erosion");
 
         // challenge rules apply at the end of year/quarter, not beginning
         challenges.Add(challenge);

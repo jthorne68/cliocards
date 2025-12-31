@@ -46,7 +46,7 @@ public class CardHandler : MonoBehaviour
             float moveby = 10.0f * Time.deltaTime;
             Vector2 cur = t.position;
             Vector2 move = new Vector2((pos.x - cur.x) * moveby, (pos.y - cur.y) * moveby);
-            if (move.magnitude < 0.001)
+            if (move.magnitude < 0.0002)
             {
                 t.position = pos;
                 t.localScale = scale;
