@@ -9,7 +9,7 @@
 
 	{
 		"name":"1900","art":"globe000", "desc":"",
-		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Childcare",
+		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation",
 		"type":"temp"
 	},
 

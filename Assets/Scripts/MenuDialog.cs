@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MenuDialog : MonoBehaviour
@@ -25,6 +26,12 @@ public class MenuDialog : MonoBehaviour
         yeartext = GameObject.Find("yeartext").GetComponent<TextMeshPro>();
         difftext = GameObject.Find("difftext").GetComponent<TextMeshPro>();
         updateyear();
+        int maxyear = state.getval(TableState.MAXDECADE, 1900);
+        if (maxyear == 1900)
+        {
+            leftbtn.SetActive(false);
+            rightbtn.SetActive(false);
+        }
     }
 
     void updatevisibility()
@@ -71,11 +78,12 @@ public class MenuDialog : MonoBehaviour
     public void OnYearPlus()
     {
         int year = state.getval(TableState.STARTYEAR);
-        if (year >= 2000) return;
+        int maxyear = state.getval(TableState.MAXDECADE);
+        if (year >= maxyear) return;
         year += 10;
         state.setval(TableState.STARTYEAR, year);
-        rightbtn.SetActive(year < 2000);
-        leftbtn.SetActive(true);
+        rightbtn.SetActive(year < maxyear);
+        leftbtn.SetActive(maxyear > 1900);
         updateyear();
     }
 

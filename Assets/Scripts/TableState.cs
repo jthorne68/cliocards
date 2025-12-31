@@ -20,6 +20,7 @@ public class TableState
     public const string YEAR = "year"; // 1-25
     public const string STARTYEAR = "startyear"; // 1900-2000
     public const string CAPITAL = "capital"; // any value
+    public const string MAXDECADE = "maxdecade"; // 1900-2000
 
     public const string REMOVE = "remove"; // this removes the current card from the deck
     public const string DELETE = "delete"; // this removes the first card in hand
@@ -62,11 +63,11 @@ public class TableState
     public Dictionary<string, int> values; // all game state numbers
 
     public static Dictionary<string, string> symboltable = new() {
-        { "investment", " ▲" },
-        { "debt", " ▼" },
+        { "investment", " \u2590" },
+        { "debt", " \u259A" },
         { "energy", " ♦" },
-        { "unrest", " ◘" },
-        { "education", " ■" }
+        { "unrest", " \u270A" },
+        { "education", " \uF6FE" }
     };
 
     public bool isingame = false;

@@ -662,6 +662,8 @@ public class TableController : MonoBehaviour
             }
             else if (state.getval(TableState.YEAR) == 25)
             {
+                int maxdecade = state.getval(TableState.MAXDECADE);
+                if (maxdecade < 2000) state.setval(TableState.MAXDECADE, state.getval(TableState.STARTYEAR) + 10);
                 rtype = ReportDialog.WIN;
                 msg = "business survived 25 years\nsocietal stability at " + state.getval(TableState.STABILITY) + "%\nthe future is ";
                 if (state.getval(TableState.STABILITY) >= 75) msg += "promising";
