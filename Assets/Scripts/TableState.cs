@@ -371,8 +371,6 @@ public class TableState
             }
         }
 
-        challenge = CardLibrary.idfor("Wage Erosion");
-
         // challenge rules apply at the end of year/quarter, not beginning
         challenges.Add(challenge);
         result.AddRange(processrulesforcard(challenge));

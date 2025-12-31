@@ -99,6 +99,17 @@ public class CardLibrary : MonoBehaviour
         return s;
     }
 
+    public List<int> getreferencelist()
+    {
+        List<int> ids = new();
+        for (int i = 0; i < data.totalcards(); i++)
+        {
+            CardInfo info = cardinfo(i);
+            if ((info.type == "") || (info.type == "perm") || (info.type == "temp")) ids.Add(i);
+        }
+        return ids;
+    }
+
     public void setupcard(GameObject c, int id, TableState state)
     {
         CardInfo info = data.cardinfo(id);

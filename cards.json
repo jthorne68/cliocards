@@ -8,67 +8,67 @@
 	},
 
 	{
-		"name":"1900","art":"", "desc":"",
+		"name":"1900","art":"globe000", "desc":"",
 		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Childcare",
 		"type":"temp"
 	},
 
 	{
-		"name":"1910","art":"", "desc":"Less starting capital",
+		"name":"1910","art":"globe000", "desc":"Less starting capital",
 		"rules":"capital=30",
 		"type":"temp"
 	},
 
 	{
-		"name":"1920","art":"", "desc":"More staring debt",
+		"name":"1920","art":"globe000", "desc":"More staring debt",
 		"rules":"debt=10",
 		"type":"temp"
 	},
 	
 	{
-		"name":"1930","art":"", "desc":"Fewer starting deals",
+		"name":"1930","art":"globe000", "desc":"Fewer starting deals",
 		"rules":"maxdeals=2",
 		"type":"temp"
 	},
 
 	{
-		"name":"1940","art":"", "desc":"Smaller starting hand",
+		"name":"1940","art":"globe000", "desc":"Smaller starting hand",
 		"rules":"maxhand=4",
 		"type":"temp"
 	},
 
 	{
-		"name":"1950","art":"", "desc":"Debt goes up each year",
+		"name":"1950","art":"globe000", "desc":"Debt goes up each year",
 		"rules":"perm+Deficit",
 		"type":"temp"
 	},
 
 	{
-		"name":"1960","art":"", "desc":"Larger starting goal",
+		"name":"1960","art":"globe000", "desc":"Larger starting goal",
 		"rules":"goal=35",
 		"type":"temp"
 	},
 
 	{
-		"name":"1970","art":"", "desc":"Stability starts at 50%",
+		"name":"1970","art":"globe000", "desc":"Stability starts at 50%",
 		"rules":"stability=50",
 		"type":"temp"
 	},
 
 	{
-		"name":"1980","art":"", "desc":"Higher annual growth",
+		"name":"1980","art":"globe000", "desc":"Higher annual growth",
 		"rules":"growth=15",
 		"type":"temp"
 	},
 
 	{
-		"name":"1990","art":"", "desc":"Higher store inflation",
+		"name":"1990","art":"globe000", "desc":"Higher store inflation",
 		"rules":"inflation=15",
 		"type":"temp"
 	},
 
 	{
-		"name":"2000","art":"", "desc":"Larger starting goal",
+		"name":"2000","art":"globe000", "desc":"Larger starting goal",
 		"rules":"goal=40",
 		"type":"temp"
 	},
@@ -330,7 +330,7 @@
 	{
 		"name":"Fair Wages",
 		"art":"miner000",
-		"desc":"+5 stability\b-8 wealth\nn+1 hand size\nuntil end of year",
+		"desc":"+5 stability\n-8 wealth\n+1 hand size\nuntil end of year",
 		"rules":"stability+5,wealth-8,hand+1",
 		"type":""
 	},

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Rendering;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StoreDialog : MonoBehaviour
 {
@@ -116,6 +117,26 @@ public class StoreDialog : MonoBehaviour
         if (cart[itemnum]) controller.audiosource.PlayOneShot(controller.buysound);
         cards[itemnum].SetActive(!cart[itemnum]);
         updatestats();
+    }
+
+    private void showcardcollection(string desc, List<int> ids)
+    {
+        GameObject deckdlg = Instantiate(controller.carddlg);
+        deckdlg.transform.SetParent(controller.table.transform);
+        CardsDialog cd = deckdlg.GetComponent<CardsDialog>();
+        cd.setup(desc, ids, state, controller);
+        cd.storedlg = this.gameObject;
+        gameObject.SetActive(false);
+    }
+
+    public void showdeck()
+    {
+        showcardcollection("Deck", controller.state.mycards);
+    }
+
+    public void showreference()
+    {
+        showcardcollection("Reference", CardLibrary.instance.getreferencelist());
     }
 
     public async void checkout()

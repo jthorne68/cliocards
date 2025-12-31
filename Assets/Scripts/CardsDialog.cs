@@ -8,7 +8,8 @@ public class CardsDialog : MonoBehaviour
     public TableController controller;
     public TableState state;
     CardData carddata;
-    GameObject returndlg = null;
+    public GameObject returndlg = null;
+    public GameObject storedlg = null;
 
     string titletext;
     Dictionary<int, int> idcounts;
@@ -81,6 +82,7 @@ public class CardsDialog : MonoBehaviour
     {
         Destroy(gameObject);
         if (returndlg != null) controller.showdialog(returndlg);
+        if (storedlg != null) storedlg.SetActive(true);
     }
 
 

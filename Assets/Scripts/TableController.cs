@@ -54,7 +54,7 @@ public class TableController : MonoBehaviour
 
     public GameObject tablelandscape;
     public GameObject tableportrait;
-    GameObject table;
+    public GameObject table;
 
     List<GameObject> playslots;
     List<GameObject> permslots;

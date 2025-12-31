@@ -81,12 +81,7 @@ public class MenuDialog : MonoBehaviour
 
     public void OnReference()
     {
-        List<int> ids = new();
-        for (int i = 0; i < CardLibrary.getdataref().totalcards(); i++)
-        {
-            CardInfo info = CardLibrary.cardinfo(i);
-            if ((info.type == "") || (info.type == "perm")) ids.Add(i);
-        }
+        List<int> ids = CardLibrary.instance.getreferencelist();
         controller.showcardcollection("All cards", ids, controller.menudlg);
     }
 
