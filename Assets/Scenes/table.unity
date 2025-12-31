@@ -10871,6 +10871,7 @@ GameObject:
   - component: {fileID: 1848390091}
   - component: {fileID: 1848390090}
   - component: {fileID: 1848390092}
+  - component: {fileID: 1848390093}
   m_Layer: 0
   m_Name: TableController
   m_TagString: Untagged
@@ -10914,6 +10915,7 @@ MonoBehaviour:
   bosssound: {fileID: 8300000, guid: 8745815e0dbd1fa4aafa16ebb6069148, type: 3}
   tablelandscape: {fileID: 1758613610}
   tableportrait: {fileID: 171924871}
+  table: {fileID: 0}
   fadehandler: {fileID: 0}
   fader: {fileID: 1851863191}
   tutorial: {fileID: 1486353770}
@@ -11034,6 +11036,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!164 &1848390093
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848390089}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -300
+  m_DecayTime: 0.6
+  m_DecayHFRatio: 0.59
+  m_ReflectionsLevel: -1219
+  m_ReverbLevel: 441
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 27
 --- !u!1 &1851863191
 GameObject:
   m_ObjectHideFlags: 0
