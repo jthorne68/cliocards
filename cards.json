@@ -936,35 +936,35 @@
 	{
 		"name":"Rationing",
 		"art":"farmer000",
-		"desc":"set hand size to 8\nset deals to zero",
+		"desc":"5-year milestone\n\nset hand size to 8\nset deals to zero",
 		"rules":"hand=8,deals=1,deals=1|quarter=1,deals=1|quarter=2,deals=1|quarter=3,deals=1|quarter=4",
 		"type":"boss1"
 	},
 	{
 		"name":"Contraction",
 		"art":"construction000",
-		"desc":"-1 play\n+1 deal",
+		"desc":"5-year milestone\n\n-1 play\n+1 deal",
 		"rules":"plays-1,deals+1",
 		"type":"boss2"
 	},	
 	{
 		"name":"Financial Crisis",
 		"art":"bank000",
-		"desc":"-50 wealth",
+		"desc":"5-year milestone\n\n-50 wealth",
 		"rules":"wealth-50",
 		"type":"boss3"
 	},	
 	{
 		"name":"Authoritarianism",
 		"art":"banker000",
-		"desc":"-50 stability when\nadding a play",
+		"desc":"5-year milestone\n\n-50 stability when\nadding a play",
 		"rules":"stability-50|plays+",
 		"type":"boss4"
 	},	
 	{
 		"name":"Crash",
 		"art":"gang000",
-		"desc":"set stability to 10\n-50 wealth\n-3 stability when\nwealth increases",
+		"desc":"5-year milestone\n\nset stability to 10\n-50 wealth\n-3 stability when\nwealth increases",
 		"rules":"stability=10,wealth-50,stability-3|wealth+",
 		"type":"boss5"
 	},	

@@ -275,18 +275,18 @@ public class TableController : MonoBehaviour
         updatelayout();
         int year = state.getval(TableState.YEAR);
         challengecard = createcard(state.challenge, challengeslot, challengeslot);
-        if (year % 5 == 0)
-        {
+//        if (year % 5 == 0)
+//        {
             challengecard.transform.position = Vector2.zero + Vector2.up * 5;
             CardHandler h = challengecard.GetComponent<CardHandler>();
             h.scale *= 2;
             h.pos = Vector2.zero;
-            audiosource.PlayOneShot(bosssound);
+            audiosource.PlayOneShot(year % 5 == 0 ? bosssound : succeedsound);
             await Task.Delay(2000);
             GameObject prevcard = challengecard;
             challengecard = createcard(state.challenge, challengecard, challengeslot);
             Destroy(prevcard);
-        }
+//        }
 
         foreach (CardRule rule in result) await animaterule(rule);
 
