@@ -937,9 +937,9 @@
 		"name":"Rationing",
 		"art":"farmer000",
 		"desc":"set hand size to 8\nset deals to zero",
-		"rules":"hand=8,deals=1,deals=1|quarter=1,deals=1|quarter=2,deals=1|quarter=3,deals=1|quarter=4",
+	"rules":"hand=8,deals=1,deals=1|quarter=1,deals=1|quarter=2,deals=1|quarter=3,deals=1|quarter=4",
 		"type":"boss1"
-	},	
+	},
 	{
 		"name":"Contraction",
 		"art":"construction000",

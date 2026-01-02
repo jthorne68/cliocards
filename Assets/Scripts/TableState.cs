@@ -311,6 +311,7 @@ public class TableState
 
     public List<CardRule> newyear()
 	{
+        challenge = 0; // don't trigger last year's challenge rules here
         setval(WEALTH, 0);
 
         List<CardRule> result = addval(YEAR, 1);
