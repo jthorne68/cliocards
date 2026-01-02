@@ -19,7 +19,7 @@ public class CardLibrary : MonoBehaviour
 
     private Dictionary<char, Color> colors = new();
 
-    private static string[] colorvalues = {
+    public static string[] colorvalues = {
         "#6A8293",
         "#4F965A",
         "#4F90C8",
@@ -32,6 +32,7 @@ public class CardLibrary : MonoBehaviour
         "#9B5E7D"
     };
 
+    /*
     private static string[] colornames = {
         "0#AAB1B7",
         "1#A0B9A4",
@@ -64,6 +65,7 @@ public class CardLibrary : MonoBehaviour
         "S#38151F",
         "T#321725"
     };
+    */
 
     public Color colorfor(char c)
     {

@@ -182,12 +182,20 @@ public class TableState
 
     public string subvals(string s)
     {
-        if (s.IndexOf('{') != -1)
-            foreach (KeyValuePair<string, int> e in values)
-                s = s.Replace("{" + e.Key + "}", "<color=yellow>" + e.Value.ToString() + symbolfor(e.Key) + "</color>");
-        s = s.Replace("\nremove", "\n<color=#FFC080>remove</color>");
-        s = s.Replace("+<color=yellow>-", "<color=yellow>-"); // don't show +-
-        s = s.Replace("-<color=yellow>-", "<color=yellow>+"); // don't show --
+        if (s.IndexOf('{') == -1) return s;
+        foreach (KeyValuePair<string, int> e in values)
+        {
+            string cval;
+            if (e.Key == "investment") cval = CardLibrary.colorvalues[1]; // green
+            else if (e.Key == "debt") cval = CardLibrary.colorvalues[8]; // purple
+            else if (e.Key == "education") cval = CardLibrary.colorvalues[2]; // blue
+            else if (e.Key == "energy") cval = CardLibrary.colorvalues[5]; // yellow
+            else cval = CardLibrary.colorvalues[5];
+            s = s.Replace("{" + e.Key + "}", "<color=" + cval + ">" + e.Value.ToString() + symbolfor(e.Key) + "</color>")
+                .Replace("+<color=" + cval + ">-", "<color=" + cval + ">-") // don't show +-
+                .Replace("-<color=" + cval + ">-", "<color=" + cval + ">+"); // don't show --
+        }
+        s = s.Replace("\nremove", "\n<color=" + CardLibrary.colorvalues[7] + ">remove</color>"); // red
         return s;
     }
 
