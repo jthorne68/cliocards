@@ -54,7 +54,7 @@ public class ReportDialog : MonoBehaviour
             }
             Transform t = GameObject.Find("timelinetick").transform;
             float yearwid = (GameObject.Find("timelinetick5").transform.position.x - t.position.x) / 25;
-            t.position += (Vector3.right * controller.state.getval(TableState.YEAR) * yearwid);
+            t.position += (Vector3.right * (controller.state.getval(TableState.YEAR) + 1) * yearwid);
         }
         message.GetComponent<TextMeshPro>().text = msg;
     }
