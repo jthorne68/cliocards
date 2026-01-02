@@ -394,8 +394,8 @@
 	{
 		"name":"Public Schools",
 		"art":"institution000",
-		"desc":"-20 stability\n+{education} stability\nfive times",
-		"rules":"stability-20,stability+education,stability+education,stability+education,stability+education,stability+education",
+		"desc":"-24 stability\n+{education} stability\nthree times",
+		"rules":"stability-24,stability+education,stability+education,stability+education",
 		"type":""
 	},
 	{

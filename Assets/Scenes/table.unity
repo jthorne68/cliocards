@@ -848,6 +848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnnext
       objectReference: {fileID: 0}
+    - target: {fileID: 2563810046094620503, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.46141705
@@ -2141,8 +2145,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
+  m_sharedMaterial: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2238,7 +2242,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3595,8 +3599,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
+  m_sharedMaterial: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3692,7 +3696,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4560,6 +4564,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3699887445013449203, guid: f39db5d257407674f96bc4ce208c902c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
     - target: {fileID: 4675984711134262645, guid: f39db5d257407674f96bc4ce208c902c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 85.9032
@@ -7266,6 +7274,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3699887445013449203, guid: f39db5d257407674f96bc4ce208c902c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
     - target: {fileID: 4675984711134262645, guid: f39db5d257407674f96bc4ce208c902c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 85.72768
@@ -8814,6 +8826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnmenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2563810046094620503, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.48880142
@@ -11966,6 +11982,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btndeal
       objectReference: {fileID: 0}
+    - target: {fileID: 2563810046094620503, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
     - target: {fileID: 4311792687411238304, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5470397
@@ -13461,8 +13481,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
+  m_sharedMaterial: {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13558,7 +13578,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: -8709788490866383508, guid: c7320932b8dea6c418b72e250506ed81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

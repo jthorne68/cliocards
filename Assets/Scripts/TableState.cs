@@ -63,11 +63,11 @@ public class TableState
     public Dictionary<string, int> values; // all game state numbers
 
     public static Dictionary<string, string> symboltable = new() {
-        { "investment", " \u2590" },
-        { "debt", " \u259A" },
-        { "energy", " ♦" },
-        { "unrest", " \u270A" },
-        { "education", " \uF6FE" }
+        { "investment", "\u25B2" },
+        { "debt", "\u25BC" },
+        { "energy", "\u26a1" },
+        { "unrest", "\u270A" },
+        { "education", "\uF6FE" }
     };
 
     public bool isingame = false;
