@@ -132,45 +132,6 @@ public class TableState
         for (int processyear = 1900; processyear <= getval(STARTYEAR); processyear += 10)
             processrulesforcard(data.idfor("" + processyear));
 
-        /*
-        setval(MAXDEALS, 3);
-        setval(MAXHAND, 5);
-        setval(MAXPLAYS, 3);
-        setval(CAPITAL, 100);
-
-        setval(GOAL, 30);
-        setval(STABILITY, 100);
-
-        setval("debt", 5);
-        setval("investment", 3);
-        setval("elite", 5);
-        setval("unrest", 5);
-
-        setval("education", 3);
-        setval("housing", 3);
-        setval("health", 3);
-		
-		setval("growth", 10);
-		setval("inflation", 10);
-
-		if (startyear >= 1910) setval(CAPITAL, 30);
-		if (startyear >= 1920) setval("debt", 10);
-		if (startyear >= 1930) setval(MAXHAND, 4);
-		if (startyear >= 1940) perms.Add(data.idfor("Deficit"));
-		if (startyear >= 1950) setval(GOAL, 35);
-		if (startyear >= 1960) setval(STABILITY, 50);
-		if (startyear >= 1970) setval("growth", 15);
-		if (startyear >= 1980) setval(MAXDEALS, 2);
-		if (startyear >= 1990) setval("inflation", 15);
-		if (startyear >= 2000) setval(GOAL, 40);
-
-        for (int j = 0; j < 5; j++) {
-            mycards.Add(data.idfor("Sale"));
-            mycards.Add(data.idfor("Repayment"));
-            mycards.Add(data.idfor("Donation"));
-        }
-        */
-
     }
 
     public void quitgame()
@@ -226,6 +187,7 @@ public class TableState
                 s = s.Replace("{" + e.Key + "}", "<color=yellow>" + e.Value.ToString() + symbolfor(e.Key) + "</color>");
         s = s.Replace("\nremove", "\n<color=#FFC080>remove</color>");
         s = s.Replace("+<color=yellow>-", "<color=yellow>-"); // don't show +-
+        s = s.Replace("-<color=yellow>-", "<color=yellow>+"); // don't show --
         return s;
     }
 
@@ -268,9 +230,9 @@ public class TableState
             int id = data.idfor(amount);
             if (op == '+')
             {
-                // permanent effects must be unique
+                // permanent effects and named status effects must be unique
                 // NOTE: This is enforced by store; statuses can stack.
-                if ((stat == STAT) || !perms.Contains(id)) perms.Add(id);
+                if (((stat == STAT) && (amount[0] == ' ')) || !perms.Contains(id)) perms.Add(id);
             }
             else if (op == '-') perms.Remove(id);
         }
@@ -442,7 +404,7 @@ public class TableState
             else if (rule.stat == PERM)
             {
                 int pid = CardLibrary.idfor(rule.amount.Trim('+'));
-                if (!perms.Contains(id)) perms.Add(pid);
+                if (!perms.Contains(pid)) perms.Add(pid);
             }
             else if (string.IsNullOrEmpty(rule.startat.stat))
                 results.AddRange(processrules(rule.stat, rule.amount));

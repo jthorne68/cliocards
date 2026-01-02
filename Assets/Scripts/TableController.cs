@@ -628,12 +628,9 @@ public class TableController : MonoBehaviour
 
         List<CardRule> rules;
         if (state.getval(TableState.QUARTER) < 4) { // shuffle and continue
+            state.setval(TableState.DEALS, state.getval(TableState.MAXDEALS));
             rules = state.addval(TableState.QUARTER, 1);
             foreach (CardRule rule in rules) await animaterule(rule);
-            // check for rules that trigger on a specific quarter
-            // state.processrules(TableState.QUARTER, "=" + state.getval(TableState.QUARTER)); // turns out: redundant
-            state.setval(TableState.DEALS, state.getval(TableState.MAXDEALS));
-            // shuffledeck();
             isanimating = false;
             await dealhand();
             isanimating = true;

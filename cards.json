@@ -9,7 +9,7 @@
 
 	{
 		"name":"1900","art":"globe000", "desc":"",
-		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=3,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation",
+		"rules":"maxdeals=3,maxhand=5,maxplays=3,capital=100,goal=30,stability=100,debt=5,investment=3,grind=-5,elite=5,unrest=5,education=3,energy=10,health=3,growth=10,inflation=10,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Sale,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Repayment,deck+Donation,deck+Donation,deck+Donation,deck+Donation,deck+Donation",
 		"type":"temp"
 	},
 
@@ -137,8 +137,8 @@
 	{
 		"name":"Research",
 		"art":"science000",
-		"desc":"+7 wealth\n-2 stability\n+1 play until\nend of year",
-		"rules":"wealth+7,stability-2,plays+1",
+		"desc":"-1 hand size and\n+1 play until\nend of year",
+		"rules":"hand-1,plays+1",
 		"type":""
 	},
 	{
@@ -172,8 +172,8 @@
 	{
 		"name":"Grind",
 		"art":"worker000",
-		"desc":"+{grind} wealth\nincrease by one",
-		"rules":"wealth+grind,grind+1",
+		"desc":"+{grind} wealth\nincrease by one\n-{grind} stability\ndecrease by one",
+		"rules":"wealth+grind,stability-grind,grind+1",
 		"type":""
 	},
 	{
@@ -286,7 +286,7 @@
 	{
 		"name":"Merger",
 		"art":"institution000",
-		"desc":"double investment ({investment})\n-1 hand size permanently\nremove",
+		"desc":"double current\ninvestment ({investment})\n-1 hand size permanently\nremove",
 		"rules":"investment+investment,hand-1,maxhand-1,remove",
 		"type":""
 	},	
@@ -399,10 +399,10 @@
 		"type":""
 	},
 	{
-		"name":"Solar Farm",
+		"name":"Solar Power",
 		"art":"rural000",
-		"desc":"-6 wealth\n+5 energy",
-		"rules":"wealth-6,energy+5",
+		"desc":"-6 wealth\n+10 energy",
+		"rules":"wealth-6,energy+10",
 		"type":""
 	},
 	{
@@ -519,13 +519,6 @@
 		"name":"Clean Up",
 		"art":"logger000",
 		"desc":"remove first\ncard in hand\nremove",
-		"rules":"delete,remove",
-		"type":""
-	},
-	{
-		"name":"Efficiency",
-		"art":"logger000",
-		"desc":"when hand size decreases\nremove first\ncard in hand",
 		"rules":"delete,remove",
 		"type":""
 	},
@@ -696,9 +689,9 @@
 	},
 	{
 		"name":"Power Grid",
-		"art":"rural000",
-		"desc":"\n+{energy} stability\neach year and\nset energy ({energy}) to 0",
-		"rules":"stability+{energy}|quarter=1,energy=0|quarter=1",
+		"art":"gadgetl000",
+		"desc":"\n+{energy} stability\nat end of year and\nset energy ({energy}) to 0",
+		"rules":"stability+{energy}|quarter=5,energy=0|quarter=5",
 		"type":"perm"
 	},	
 	{
@@ -737,7 +730,7 @@
 		"type":"perm"
 	},	
 	{
-		"name":"Power Plant",
+		"name":"Wind Power",
 		"art":"construction000",
 		"desc":"+1 investment ({investment})\nwhen energy increases",
 		"rules":"investment+1|energy+",
@@ -782,8 +775,8 @@
 	{
 		"name":"Public Works",
 		"art":"bridge000",
-		"desc":"+10 energy ({energy})",
-		"rules":"energy+10",
+		"desc":"+20 energy ({energy})",
+		"rules":"energy+20",
 		"type":"year1"
 	},	
 	{
@@ -944,7 +937,7 @@
 		"name":"Rationing",
 		"art":"farmer000",
 		"desc":"set hand size to 8\nset deals to zero",
-		"rules":"hand=8,deals=1",
+		"rules":"hand=8,deals=1,deals=1|quarter=1,deals=1|quarter=2,deals=1|quarter=3,deals=1|quarter=4",
 		"type":"boss1"
 	},	
 	{
