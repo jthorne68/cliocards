@@ -689,7 +689,7 @@
 	},
 	{
 		"name":"Power Grid",
-		"art":"gadgetl000",
+		"art":"gadget000",
 		"desc":"\n+{energy} stability\nat end of year and\nset energy ({energy}) to 0",
 		"rules":"stability+{energy}|quarter=5,energy=0|quarter=5",
 		"type":"perm"

@@ -185,17 +185,18 @@ public class TableState
         if (s.IndexOf('{') == -1) return s;
         foreach (KeyValuePair<string, int> e in values)
         {
-            string cval;
-            if (e.Key == "investment") cval = CardLibrary.colorvalues[1]; // green
-            else if (e.Key == "debt") cval = CardLibrary.colorvalues[8]; // purple
-            else if (e.Key == "education") cval = CardLibrary.colorvalues[2]; // blue
-            else if (e.Key == "energy") cval = CardLibrary.colorvalues[5]; // yellow
-            else cval = CardLibrary.colorvalues[5];
-            s = s.Replace("{" + e.Key + "}", "<color=" + cval + ">" + e.Value.ToString() + symbolfor(e.Key) + "</color>")
-                .Replace("+<color=" + cval + ">-", "<color=" + cval + ">-") // don't show +-
-                .Replace("-<color=" + cval + ">-", "<color=" + cval + ">+"); // don't show --
+            char cchar = '5';
+            if (e.Key == "investment") cchar = '1'; // green
+            else if (e.Key == "debt") cchar = '8'; // purple
+            else if (e.Key == "education") cchar = '2'; // blue
+            else if (e.Key == "energy") cchar = '5'; // yellow
+            else if (e.Key == "unrest") cchar = '6'; // yellow
+            string cval = CardLibrary.instance.colorfor(cchar).ToHexString();
+            s = s.Replace("{" + e.Key + "}", "<color=#" + cval + ">" + e.Value.ToString() + symbolfor(e.Key) + "</color>")
+                .Replace("+<color=#" + cval + ">-", "<color=#" + cval + ">-") // don't show +-
+                .Replace("-<color=#" + cval + ">-", "<color=#" + cval + ">+"); // don't show --
         }
-        s = s.Replace("\nremove", "\n<color=" + CardLibrary.colorvalues[7] + ">remove</color>"); // red
+        s = s.Replace("\nremove", "\n<color=#" + CardLibrary.instance.colorfor('7').ToHexString() + ">remove</color>"); // red
         return s;
     }
 
