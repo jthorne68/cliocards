@@ -775,6 +775,7 @@ public class TableController : MonoBehaviour
             info.ids[info.ix] = selid;
             info.cards[info.ix] = createcard(selid, selectslot, slot);
             deselectall();
+            updatestats(true);
         }
         else {
             if (slot == deckslot)
