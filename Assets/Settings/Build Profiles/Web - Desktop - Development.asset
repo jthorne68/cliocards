@@ -970,6 +970,6 @@ MonoBehaviour:
         m_InsightsSettingsContainer:
           m_BuildProfileEngineDiagnosticsState: 2
         m_CodeOptimization: 0
-        m_WebGLClientBrowserPath: 
+        m_WebGLClientBrowserPath: C:/Program Files/Google/Chrome/Application/chrome.exe
         m_WebGLClientBrowserType: 0
         m_WebGLTextureSubtarget: 1
