@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using System;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 
 public class CardLibrary : MonoBehaviour
@@ -118,9 +119,9 @@ public class CardLibrary : MonoBehaviour
 
         if ((c == null) || (info == null)) return;
         SpriteRenderer sp = c.transform.GetComponent<SpriteRenderer>(); // background
-        if (info.type == "stat") sp.color = colorfor('Q');
-        if (info.type == "perm") sp.color = colorfor('O');
-        if (info.type.StartsWith("year")) sp.color = colorfor('S');
+        if (info.type == "stat") sp.color = Color.Lerp(colorfor('Q'), Color.black, 0.3f);
+        if (info.type == "perm") sp.color = Color.Lerp(colorfor('M'), Color.black, 0.3f);
+        if (info.type.StartsWith("year")) sp.color = Color.Lerp(colorfor('S'), Color.black, 0.3f);
         Transform t = c.transform.Find("name");
         TextMeshPro tmp = t.GetComponent<TextMeshPro>();
         tmp.text = info.name;

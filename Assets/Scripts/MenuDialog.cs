@@ -32,6 +32,7 @@ public class MenuDialog : MonoBehaviour
             leftbtn.SetActive(false);
             rightbtn.SetActive(false);
         }
+        if (!controller.state.ismusic) GetComponent<AudioSource>().Stop();
     }
 
     void updatevisibility()

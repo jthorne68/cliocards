@@ -10913,6 +10913,8 @@ MonoBehaviour:
   reportdlg: {fileID: 2014019805147117928, guid: 81bb346a6ecc3414889be63b67e31b15, type: 3}
   storedlg: {fileID: 2277554006056025207, guid: 3a962937415a63041891b5e7ac321241, type: 3}
   introdlg: {fileID: 2395048821891258494, guid: ca014c771d116be41bd508478ee00732, type: 3}
+  creditsdlg: {fileID: 8707145367022045634, guid: 1dcb783862d7b6549854e0dba74b76d7, type: 3}
+  optionsdlg: {fileID: 8707145367022045634, guid: f00b7aaf972241540a9453af112900be, type: 3}
   audiosource: {fileID: 0}
   shufflesound: {fileID: 8300000, guid: 9f3f866d0d714fc4d81c7e19b6a72fa8, type: 3}
   playsound: {fileID: 8300000, guid: aec77c05dd2f11f4c8d30f20afa238d8, type: 3}

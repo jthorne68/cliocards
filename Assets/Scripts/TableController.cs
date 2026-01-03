@@ -117,6 +117,11 @@ public class TableController : MonoBehaviour
 
     private string filename;
 
+    public void updateaudio()
+    {
+        audiosource.mute = !state.issound;
+        // update audio mixer based on state sound/music settings
+    }
     public void animatenumber(string key, string amount, Transform t)
     {
         float floatsp = 0.2f;
@@ -747,6 +752,7 @@ public class TableController : MonoBehaviour
             // TODO: show single-card details (use a text box like the stats)
             return; 
         }
+        if (state.isdragdrop) deselectall();
         if ((info != null) && info.isperm)
         {
             deselectall();
@@ -817,6 +823,7 @@ public class TableController : MonoBehaviour
             if (!targetslot.GetComponent<SlotHandler>().isactive)
                 targetslot = slot; // dropping on inactive slot is equivalent to empty/go back
         }
+        if (!state.isdragdrop) targetslot = slot; // don't allow dragging to anywhere else
 
         if (drag != 0)
         {
@@ -870,6 +877,7 @@ public class TableController : MonoBehaviour
     public void showmenu()
     {
         showdialog(menudlg);
+        savestate();
     }
 
     public void showcardcollection(string title, List<int> ids, GameObject returndlg = null)
@@ -980,7 +988,7 @@ public class TableController : MonoBehaviour
             }
         }
         else { // update active layout for orientation and screen size
-            if (dragcard != null)
+            if (state.isdragdrop && (dragcard != null))
             {
                 Vector3 saveangle = dragcard.transform.eulerAngles;
                 dragcard.transform.eulerAngles = Vector3.zero;

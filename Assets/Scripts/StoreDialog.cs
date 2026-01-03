@@ -28,6 +28,7 @@ public class StoreDialog : MonoBehaviour
     {
         controller = GameObject.Find("TableController").GetComponent<TableController>();
         state = controller.state;
+        if (!state.ismusic) GetComponent<AudioSource>().Stop();
         total = transform.Find("total").gameObject.GetComponent<TextMeshPro>();
 
         capital = state.getval(TableState.CAPITAL);

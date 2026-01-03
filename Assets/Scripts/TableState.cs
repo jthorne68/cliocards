@@ -72,13 +72,20 @@ public class TableState
 
     public bool isingame = false;
 
+    public bool isdragdrop = true;
+    public bool issound = true;
+    public bool ismusic = true;
+
     private CardData data;
 
     // default constructor
     public TableState()
 	{
         isingame = false;
-		challenge = 0;
+        isdragdrop = true;
+        issound = true;
+        ismusic = true;
+        challenge = 0;
         challenges = new();
 		perms = new();
 		mycards = new();
@@ -100,6 +107,9 @@ public class TableState
     public TableState(TableState t)
 	{
         isingame = t.isingame;
+        isdragdrop = t.isdragdrop;
+        issound = t.issound;
+        ismusic = t.ismusic;
         data = t.data;
 		challenge = t.challenge;
         challenges = new List<int>(t.challenges);
