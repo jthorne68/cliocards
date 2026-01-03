@@ -117,6 +117,10 @@ public class CardLibrary : MonoBehaviour
         CardInfo info = data.cardinfo(id);
 
         if ((c == null) || (info == null)) return;
+        SpriteRenderer sp = c.transform.GetComponent<SpriteRenderer>(); // background
+        if (info.type == "stat") sp.color = colorfor('Q');
+        if (info.type == "perm") sp.color = colorfor('O');
+        if (info.type.StartsWith("year")) sp.color = colorfor('S');
         Transform t = c.transform.Find("name");
         TextMeshPro tmp = t.GetComponent<TextMeshPro>();
         tmp.text = info.name;
@@ -126,7 +130,7 @@ public class CardLibrary : MonoBehaviour
         int len = info.art.Length;
         if (len < 3) return;
         t = c.transform.Find("art1");
-        SpriteRenderer sp = t.GetComponent<SpriteRenderer>();
+        sp = t.GetComponent<SpriteRenderer>();
         sp.sprite = getart(info.art.Substring(0, len - 3) + "1");
         sp.color = colorfor(info.art[len - 2]);
         t = c.transform.Find("art2");

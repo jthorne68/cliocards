@@ -182,19 +182,20 @@ public class TableState
 
     public string subvals(string s)
     {
-        if (s.IndexOf('{') == -1) return s;
-        foreach (KeyValuePair<string, int> e in values)
-        {
-            char cchar = '5';
-            if (e.Key == "investment") cchar = '1'; // green
-            else if (e.Key == "debt") cchar = '8'; // purple
-            else if (e.Key == "education") cchar = '2'; // blue
-            else if (e.Key == "energy") cchar = '5'; // yellow
-            else if (e.Key == "unrest") cchar = '6'; // yellow
-            string cval = CardLibrary.instance.colorfor(cchar).ToHexString();
-            s = s.Replace("{" + e.Key + "}", "<color=#" + cval + ">" + e.Value.ToString() + symbolfor(e.Key) + "</color>")
-                .Replace("+<color=#" + cval + ">-", "<color=#" + cval + ">-") // don't show +-
-                .Replace("-<color=#" + cval + ">-", "<color=#" + cval + ">+"); // don't show --
+        if (s.IndexOf('{') != -1) {
+            foreach (KeyValuePair<string, int> e in values)
+            {
+                char cchar = '5';
+                if (e.Key == "investment") cchar = '1'; // green
+                else if (e.Key == "debt") cchar = '8'; // purple
+                else if (e.Key == "education") cchar = '2'; // blue
+                else if (e.Key == "energy") cchar = '5'; // yellow
+                else if (e.Key == "unrest") cchar = '6'; // yellow
+                string cval = CardLibrary.instance.colorfor(cchar).ToHexString();
+                s = s.Replace("{" + e.Key + "}", "<color=#" + cval + ">" + e.Value.ToString() + symbolfor(e.Key) + "</color>")
+                    .Replace("+<color=#" + cval + ">-", "<color=#" + cval + ">-") // don't show +-
+                    .Replace("-<color=#" + cval + ">-", "<color=#" + cval + ">+"); // don't show --
+            }
         }
         s = s.Replace("\nremove", "\n<color=#" + CardLibrary.instance.colorfor('7').ToHexString() + ">remove</color>"); // red
         return s;
