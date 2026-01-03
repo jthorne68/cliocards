@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -257,7 +257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,8 +320,8 @@ MonoBehaviour:
 
     1910'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -467,7 +467,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -514,8 +514,8 @@ MonoBehaviour:
 
     CARDS'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -661,7 +661,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -706,8 +706,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1900
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1722,6 +1722,164 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
   m_PrefabInstance: {fileID: 4405887027724520827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5775597870020825100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1728678103966262223}
+    m_Modifications:
+    - target: {fileID: 616001814830643610, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123954624444946557, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Name
+      value: credbutton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123954624444946557, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2872593237140377744}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuDialog, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Size.x
+      value: 1.880152
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6062482
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.011580735
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642037535152213692, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654909065553366133, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_text
+      value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056235980357938764, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2123954624444946557, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7309304878234485216}
+  m_SourcePrefab: {fileID: 100100000, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+--- !u!4 &1045276692306695349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+  m_PrefabInstance: {fileID: 5775597870020825100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5575112001980385393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2123954624444946557, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+  m_PrefabInstance: {fileID: 5775597870020825100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &7309304878234485216
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575112001980385393}
+  m_Enabled: 1
+  m_SortingLayerID: -1852145359
+  m_SortingLayer: 9
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1001 &7585660517138598656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1816,7 +1974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: OnOptions
       objectReference: {fileID: 0}
     - target: {fileID: 7257891486391542517, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: pressevent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2047,12 +2205,15 @@ PrefabInstance:
       addedObject: {fileID: 7170364870514313666}
     - targetCorrespondingSourceObject: {fileID: 8822095627612773184, guid: 12a9024ede3dfef40970ac4cb819ba5c, type: 3}
       insertIndex: 8
-      addedObject: {fileID: 5320603764504634841}
+      addedObject: {fileID: 1045276692306695349}
     - targetCorrespondingSourceObject: {fileID: 8822095627612773184, guid: 12a9024ede3dfef40970ac4cb819ba5c, type: 3}
       insertIndex: 9
-      addedObject: {fileID: 16371282836772711}
+      addedObject: {fileID: 5320603764504634841}
     - targetCorrespondingSourceObject: {fileID: 8822095627612773184, guid: 12a9024ede3dfef40970ac4cb819ba5c, type: 3}
       insertIndex: 10
+      addedObject: {fileID: 16371282836772711}
+    - targetCorrespondingSourceObject: {fileID: 8822095627612773184, guid: 12a9024ede3dfef40970ac4cb819ba5c, type: 3}
+      insertIndex: 11
       addedObject: {fileID: 8389933084804792265}
     - targetCorrespondingSourceObject: {fileID: 8822095627612773184, guid: 12a9024ede3dfef40970ac4cb819ba5c, type: 3}
       insertIndex: -1

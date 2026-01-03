@@ -30,6 +30,8 @@ public class TableController : MonoBehaviour
     public GameObject reportdlg;
     public GameObject storedlg;
     public GameObject introdlg;
+    public GameObject creditsdlg;
+    public GameObject optionsdlg;
 
     public AudioSource audiosource;
     public AudioClip shufflesound;

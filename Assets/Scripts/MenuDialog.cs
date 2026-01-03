@@ -93,6 +93,18 @@ public class MenuDialog : MonoBehaviour
         controller.showcardcollection("All cards", ids, controller.menudlg);
     }
 
+    async public void OnCredits()
+    {
+        await controller.fadescreen();
+        controller.showdialog(controller.creditsdlg);
+    }
+
+    async public void OnOptions()
+    {
+        await controller.fadescreen();
+        controller.showdialog(controller.optionsdlg);
+    }
+
     public void OnExit()
     {
         Application.Quit();
