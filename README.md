@@ -16,7 +16,7 @@ The demo card pool is probably somewhere between ¼ and ½ the size of what the 
 
 ## Overall Structure
 
-The game starts in a decade between 1900 and 2000. Once playtesting is complete, decades will be locked until you complete the decade before it (the difficulty ascension system.) 
+The game starts in a decade between 1900 and 2000. Decades are be locked until you complete the decade before it (the difficulty ascension system.) 
 
 In each game, each year has a wealth goal. You can play only a certain number of cards per quarter. 
 
@@ -42,7 +42,9 @@ I am open to any refinement suggestions or contributions for any and all resourc
 
 All of the card designs, challenges, starting stat values, deck composition, etc., are all stored in a file called “cards.json.” in the install files. That means that playtesters can be actively involved in tuning the difficulty and even designing new cards or deleting others. Getting the card pool tuned up is going to take a lot of time and experimentation, and no one should have to wait to try an idea by sending me a request and waiting for a new version. Just edit cards.json and run it again. Zero-code modding is basically built-in.
 
-Under users/appdata/LocalLow/SingularitySoftware/ClioCards is a set of ClioData.json and 9 rotating backups. These are the last ten game states. It always loads ClioData.json when you run. It saves the game state after every deal, and after every quarter, making a rotating backup of previous states. Unlike some games, You can’t cheese the system by rewinding and retrying challenges from the start by quitting and restarting. But you CAN copy previous state history to go backwards to retry something, in particular to load the game state before a game-breaking bug and try to both get past it and possibly reproduce it (sending me the game state file and telling me how to reproduce the issue.)
+Under users/yourname/appdata/LocalLow/SingularitySoftware/ClioCards is a set of ClioData.json and 9 rotating backups. These are the last ten game states. It always loads ClioData.json when you run. It saves the game state after every deal, and after every quarter, making a rotating backup of previous states. Unlike some games, You can’t cheat the system by rewinding and retrying challenges from the start by quitting and restarting. But you CAN copy previous state history to go backwards to retry something, in particular to load the game state before a game-breaking bug and try to both get past it and possibly reproduce it (creating a ticket with the game state file and telling me how to reproduce the issue.)
+
+For testing purposes, you can edit the ClioData.json file to test various game states, including unlocking all available year challenges by setting the "maxdecade" value to 2000. 
 
 ## Gameplay Design Space
 
