@@ -2,6 +2,10 @@
 
 A single-player roguelike deckbuilder card game built in Unity for Desktop/Mobile deployment
 
+An unsigned beta setup executable can be downloaded here. 
+
+https://drive.google.com/file/d/1RaX7mU21QkQU69TeMGK7SMg0UbtsF2aU/view?usp=drive_link
+
 ## Introduction
 
 The big picture idea is to introduce players to Peter Turchin, whose ideas about why civilizations collapse is the core inspiration.
@@ -164,7 +168,7 @@ Rules can contain these special stat keywords to modify game behavior:
 
 **inflation** – the percentage by which the store prices increase every year.
 
-###Extended stats
+### Extended stats
 
 These are all introduced by cards.json and aren’t fundamental to the core mechanics, illustrating how new ideas can be added just by modifying the .json.
 
@@ -182,7 +186,7 @@ These are all introduced by cards.json and aren’t fundamental to the core mech
 
 **energy** – a permanent mechanism for storing future stability increases, but it’s spent and reset to zero on each card that uses it
 
-###Card Types
+### Card Types
 
 **"" (BLANK)** – if there is no type, it’s a regular card that you can buy in the store and put in your deck
 
