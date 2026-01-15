@@ -242,6 +242,7 @@ public class TableState
             {
                 mycards.Remove(id);
                 a = -1;
+                stat = REMOVE; // to match rule descriptions
             }
         }
         // then check to see if it's adding a permanent/status
