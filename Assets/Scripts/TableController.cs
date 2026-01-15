@@ -32,6 +32,7 @@ public class TableController : MonoBehaviour
     public GameObject introdlg;
     public GameObject creditsdlg;
     public GameObject optionsdlg;
+    public GameObject inspectdlg;
 
     public AudioSource audiosource;
     public AudioClip shufflesound;
@@ -69,6 +70,7 @@ public class TableController : MonoBehaviour
     GameObject zoomcard;
     GameObject dragcard;
     int drag;
+    public int zoomid;
 
     GameObject challengecard;
 
@@ -726,8 +728,10 @@ public class TableController : MonoBehaviour
 
     void zoominto(int id = 0)
     {
+        zoomid = 0;
         if (zoomcard != null) Destroy(zoomcard);
         if (id == 0) return;
+        zoomid = id;
         zoomcard = createcard(id, zoomslot, zoomslot);
         zoomcard.transform.localScale *= 0.8f;
         zoomcard.transform.position += (Vector3)(Vector2.up * 0.5f);
@@ -749,7 +753,7 @@ public class TableController : MonoBehaviour
         SlotInfo info = slotinfo(slot);
         if (slot == zoomslot)
         {
-            // TODO: show single-card details (use a text box like the stats)
+            if (zoomid != 0) showdialog(inspectdlg);
             return; 
         }
         if (state.isdragdrop) deselectall();

@@ -8,6 +8,7 @@ public class CardInfo
 {
     public string name;
     public string art;
+    public string text;
     public string desc;
     public string rules;
     public string type;
