@@ -176,10 +176,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2190 1 - play cards here"
+  m_text: "\u2190 place cards here"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -275,7 +275,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1352,7 +1352,7 @@ GameObject:
   - component: {fileID: 314665681}
   - component: {fileID: 314665680}
   m_Layer: 6
-  m_Name: text5
+  m_Name: text4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,10 +1397,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2190 (more choices)"
+  m_text: "\u2190 click here to get more\n\tcards to place"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1496,7 +1496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2855,8 +2855,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2190 stay above zero"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2952,7 +2952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5649,11 +5649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1181
+      value: 0.0017
       objectReference: {fileID: 0}
     - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0799
+      value: 0.0269
       objectReference: {fileID: 0}
     - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5717,7 +5717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654909065553366133, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_text
-      value: PLAY
+      value: NEXT
       objectReference: {fileID: 0}
     - target: {fileID: 9102611572320604605, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_SortingLayer
@@ -5734,7 +5734,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8056235980357938764, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
 --- !u!1001 &933215052
 PrefabInstance:
@@ -6141,8 +6144,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2190 meet the goal"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6238,7 +6241,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6411,7 +6414,7 @@ GameObject:
   - component: {fileID: 1047767498}
   - component: {fileID: 1047767497}
   m_Layer: 6
-  m_Name: text4
+  m_Name: text5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6433,8 +6436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1291, y: -0.0326}
-  m_SizeDelta: {x: 18.86239, y: 2.23284}
+  m_AnchoredPosition: {x: 0.1291, y: -0.02497}
+  m_SizeDelta: {x: 18.86239, y: 3.75833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047767497
 MonoBehaviour:
@@ -6456,10 +6459,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2 - then click here \u2192"
+  m_text: "click here to play\nthe placed cards\u2192"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
-  m_sharedMaterial: {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6555,7 +6558,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8693605220600837096, guid: a63b7cc9f6bbde8488e073ea9bad34be, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8623,7 +8626,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.74509805}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8649,8 +8652,8 @@ Transform:
   - {fileID: 1004049780}
   - {fileID: 584457470}
   - {fileID: 235059}
-  - {fileID: 1047767496}
   - {fileID: 314665679}
+  - {fileID: 1047767496}
   - {fileID: 1973087667}
   m_Father: {fileID: 1758613612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10915,6 +10918,7 @@ MonoBehaviour:
   introdlg: {fileID: 2395048821891258494, guid: ca014c771d116be41bd508478ee00732, type: 3}
   creditsdlg: {fileID: 8707145367022045634, guid: 1dcb783862d7b6549854e0dba74b76d7, type: 3}
   optionsdlg: {fileID: 8707145367022045634, guid: f00b7aaf972241540a9453af112900be, type: 3}
+  inspectdlg: {fileID: 4738985768706774141, guid: bf8de657834ea2f48a78c009dd02adbc, type: 3}
   audiosource: {fileID: 0}
   shufflesound: {fileID: 8300000, guid: 9f3f866d0d714fc4d81c7e19b6a72fa8, type: 3}
   playsound: {fileID: 8300000, guid: aec77c05dd2f11f4c8d30f20afa238d8, type: 3}
@@ -10934,6 +10938,7 @@ MonoBehaviour:
   tablelandscape: {fileID: 1758613610}
   tableportrait: {fileID: 171924871}
   table: {fileID: 0}
+  zoomid: 0
   fadehandler: {fileID: 0}
   fader: {fileID: 1851863191}
   tutorial: {fileID: 1486353770}
