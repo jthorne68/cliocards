@@ -94,6 +94,7 @@ public class TableController : MonoBehaviour
     public Fader fadehandler;
     public GameObject fader;
     public GameObject tutorial;
+    int tutorstep;
 
     public GameObject floater;
     public GameObject particleburn;
@@ -252,7 +253,17 @@ public class TableController : MonoBehaviour
     }
     public void closetutorial()
     {
-        tutorial.SetActive(false);
+        tutorstep++;
+        if (tutorstep == 6) {
+            tutorial.SetActive(false);
+            return;
+        }
+        GameObject o = tutorial.transform.Find("tutorbutton").Find("buttontext").gameObject;
+        o.GetComponent<TextMeshPro>().text = (tutorstep == 5) ? "PLAY" : "NEXT";
+        for (int i = 1; i <= 5; i++) {
+            o = tutorial.transform.Find("text" + i).gameObject;
+            o.SetActive(i == tutorstep);
+        }
     }
 
     public void newgame()
@@ -275,8 +286,13 @@ public class TableController : MonoBehaviour
 
     public async void startnewyear()
     {
-        tutorial.SetActive((state.getval(TableState.STARTYEAR) == 1900) && 
-            (state.getval(TableState.YEAR) == 0));
+        bool istutoring = (state.getval(TableState.STARTYEAR) == 1900) &&
+            (state.getval(TableState.YEAR) == 0);
+        if (istutoring) {
+            tutorstep = 0;
+            closetutorial();
+        }
+        tutorial.SetActive(istutoring);
         if (challengecard != null) Destroy(challengecard);
 
         List<CardRule> result = state.newyear();
@@ -291,7 +307,7 @@ public class TableController : MonoBehaviour
             h.scale *= 2;
             h.pos = Vector2.zero;
             audiosource.PlayOneShot(year % 5 == 0 ? bosssound : succeedsound);
-            await Task.Delay(2000);
+            if (!istutoring) await Task.Delay(2000);
             GameObject prevcard = challengecard;
             challengecard = createcard(state.challenge, challengecard, challengeslot);
             Destroy(prevcard);

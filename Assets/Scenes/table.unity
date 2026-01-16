@@ -176,7 +176,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2190 place cards here"
+  m_text: "\u2190 place cards here...\n\n\n\n\n\n\n\n\n\n\n\u2190 ...from your hand
+    here"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1374,8 +1375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.07219, y: -0.0326}
-  m_SizeDelta: {x: 13.72448, y: 2.23284}
+  m_AnchoredPosition: {x: -0.06042, y: -0.0326}
+  m_SizeDelta: {x: 16.07903, y: 2.23284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &314665680
 MonoBehaviour:
@@ -1397,7 +1398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2190 click here to get more\n\tcards to place"
+  m_text: "\u2190 click here for a new hand"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4807,7 +4808,7 @@ PrefabInstance:
     - target: {fileID: 1235360191314250692, guid: 6cc47ae98e212f244ae12c784b70c1cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3286163911610860551, guid: 2bcbfa29f039bb64f96fada269f08877, type: 3}
+      objectReference: {fileID: 3286163911610860551, guid: 54b10fa6ffaf9fa4f8e67cb90a25049d, type: 3}
     - target: {fileID: 1235360191314250692, guid: 6cc47ae98e212f244ae12c784b70c1cf, type: 3}
       propertyPath: m_Color.b
       value: 0.08235294
@@ -5633,7 +5634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2123954624444946557, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_Name
-      value: button
+      value: tutorbutton
       objectReference: {fileID: 0}
     - target: {fileID: 6820308235991876793, guid: ec18c7bf0ce7a0f4c8a9700db0275769, type: 3}
       propertyPath: m_LocalScale.x
@@ -6436,8 +6437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1291, y: -0.02497}
-  m_SizeDelta: {x: 18.86239, y: 3.75833}
+  m_AnchoredPosition: {x: 0.08134, y: -0.02497}
+  m_SizeDelta: {x: 15.34714, y: 3.75833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047767497
 MonoBehaviour:
@@ -6459,7 +6460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "click here to play\nthe placed cards\u2192"
+  m_text: "finally, click here \nto play the placed cards\u2192"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8507,7 +8508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1486353771
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -792,8 +792,8 @@
 	{
 		"name":"Prosperity",
 		"art":"banker000",
-		"text":"", "desc":"+3 elite",
-		"rules":"elite+3",
+		"text":"", "desc":"+3 investment",
+		"rules":"investment+3",
 		"type":"year1"
 	},	
 	{
